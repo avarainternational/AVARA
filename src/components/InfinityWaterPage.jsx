@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { ArrowRight, Check, Droplets, Smartphone, ShieldCheck, Sparkles, RefreshCw, Star, ChevronDown, ArrowLeft } from 'lucide-react';
-import infinityLogo from '../assets/infinity/logo.png';
-import infinityBottle from '../assets/infinity/bottle.png';
+import infinityLogoImport from '../assets/infinity/logo.png';
+import infinityBottleImport from '../assets/infinity/bottle.png';
+
+const infinityLogo = infinityLogoImport || '/infinity/logo.png';
+const infinityBottle = infinityBottleImport || '/infinity/bottle.png';
 
 export default function InfinityWaterPage({ onNavigateToAvara }) {
   const [selectedPlan, setSelectedPlan] = useState('subscription');

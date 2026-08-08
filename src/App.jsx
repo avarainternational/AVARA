@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Menu, X, ChevronDown } from 'lucide-react';
 import InfinityWaterPage from './components/InfinityWaterPage';
-import infinityLogo from './assets/infinity/logo.png';
+import infinityLogoImport from './assets/infinity/logo.png';
+
+const infinityLogo = infinityLogoImport || '/infinity/logo.png';
 
 const navTabs = [
   { id: 'overview', label: 'Overview' },
