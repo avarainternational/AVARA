@@ -1,37 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, Menu, X, ChevronDown } from 'lucide-react';
+import { ChevronRight, Menu, X } from 'lucide-react';
 import InfinityWaterPage from './components/InfinityWaterPage';
+import FeaturedDigitalInitiative from './components/FeaturedDigitalInitiative';
 import infinityLogoImport from './assets/infinity/logo.png';
+import avaraLogoImport from './assets/avara/logo.png';
+
+import HomeView from './components/views/HomeView';
+import ServicesView from './components/views/ServicesView';
+import VisionView from './components/views/VisionView';
+import ContactView from './components/views/ContactView';
 
 const infinityLogo = infinityLogoImport || '/infinity/logo.png';
+const avaraLogo = avaraLogoImport || '/logo/logo.png';
 
 const navTabs = [
-  { id: 'overview', label: 'Overview' },
-  { id: 'tab1', label: 'Placeholder Tab 1' },
-  { id: 'tab2', label: 'Placeholder Tab 2' },
+  { id: 'overview', label: 'Home' },
+  { id: 'services', label: 'Services' },
+  { id: 'vision', label: 'Vision' },
+  { id: 'contact', label: 'Contact Us' },
 ];
+
+const isInfinityRoute = (path = '', hash = '') => {
+  const p = (path || '').toLowerCase();
+  const h = (hash || '').toLowerCase();
+  return (
+    p.includes('infinity-water') ||
+    p.includes('partners/infinity') ||
+    p.includes('/infinity') ||
+    h.includes('infinity-water') ||
+    h.includes('partners/infinity') ||
+    h.includes('infinity')
+  );
+};
 
 export default function App() {
   const [currentView, setCurrentView] = useState(() => {
     if (typeof window !== 'undefined') {
-      const path = window.location.pathname.toLowerCase();
-      const hash = window.location.hash.toLowerCase();
-      if (path.includes('partners/infinity') || hash.includes('partners/infinity')) {
+      if (isInfinityRoute(window.location.pathname, window.location.hash)) {
         return 'infinity';
       }
     }
     return 'avara';
   });
 
-  const [activeTab, setActiveTab] = useState('overview');
-  const [partnerDropdownOpen, setPartnerDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handlePopState = () => {
-      const path = window.location.pathname.toLowerCase();
-      const hash = window.location.hash.toLowerCase();
-      if (path.includes('partners/infinity') || hash.includes('partners/infinity')) {
+      if (isInfinityRoute(window.location.pathname, window.location.hash)) {
         setCurrentView('infinity');
       } else {
         setCurrentView('avara');
@@ -44,9 +60,12 @@ export default function App() {
 
   const navigateToInfinity = () => {
     if (window.history && window.history.pushState) {
-      window.history.pushState({}, '', '/partners/infinity-water');
+      window.history.pushState({}, '', '/infinity-water');
     }
     setCurrentView('infinity');
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const navigateToAvara = () => {
@@ -54,6 +73,9 @@ export default function App() {
       window.history.pushState({}, '', '/');
     }
     setCurrentView('avara');
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   if (currentView === 'infinity') {
@@ -70,137 +92,112 @@ export default function App() {
           left: 0,
           right: 0,
           zIndex: 100,
-          background: 'rgba(255, 255, 255, 0.85)',
+          background: 'rgba(10, 15, 26, 0.88)',
           backdropFilter: 'saturate(180%) blur(20px)',
-          borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
-          padding: '0.8rem 0',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+          padding: '0.75rem 0',
         }}
       >
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          {/* AVARA Logo */}
-          <a href="/" onClick={(e) => { e.preventDefault(); navigateToAvara(); }} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <div
+          {/* AVARA Holding Logo */}
+          <a
+            href="/"
+            onClick={(e) => { e.preventDefault(); navigateToAvara(); }}
+            style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.75rem' }}
+          >
+            <img
+              src={avaraLogo}
+              alt="AVARA International"
               style={{
-                width: '26px',
-                height: '26px',
-                borderRadius: '6px',
-                background: 'var(--gold-gradient)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#FFFFFF',
-                fontWeight: '800',
-                fontSize: '0.85rem',
+                height: '38px',
+                width: 'auto',
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 2px 8px rgba(212, 175, 55, 0.35))',
               }}
-            >
-              A
+            />
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <span style={{ fontWeight: '800', fontSize: '1.08rem', letterSpacing: '0.01em', color: '#FFFFFF', lineHeight: 1.1 }}>
+                AVARA
+              </span>
+              <span style={{ fontSize: '0.58rem', letterSpacing: '0.12em', color: '#D4AF37', textTransform: 'uppercase', fontWeight: '700' }}>
+                International
+              </span>
             </div>
-            <span style={{ fontWeight: '700', fontSize: '1.05rem', letterSpacing: '-0.02em', color: '#1D1D1F' }}>
-              AVARA
-            </span>
           </a>
 
-          {/* Nav Tabs including Partner Companies Dropdown */}
-          <nav style={{ display: 'none', gap: '0.4rem', alignItems: 'center' }} className="desktop-tabs">
+          {/* Desktop Nav Tabs with Digital Ventures & Infinity Water */}
+          <nav style={{ display: 'none', gap: '0.5rem', alignItems: 'center' }} className="desktop-tabs">
             <a
               href="#overview"
-              onClick={() => setActiveTab('overview')}
-              className={`apple-nav-tab ${activeTab === 'overview' ? 'active' : ''}`}
+              onClick={(e) => { e.preventDefault(); document.getElementById('overview')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="apple-nav-tab"
             >
-              Overview
+              Home
             </a>
 
-            {/* Partner Companies Dropdown */}
-            <div style={{ position: 'relative' }}>
-              <button
-                onClick={() => setPartnerDropdownOpen(!partnerDropdownOpen)}
-                className="apple-nav-tab"
-                style={{
-                  background: partnerDropdownOpen ? 'rgba(0, 0, 0, 0.05)' : 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.3rem',
-                  color: '#1D1D1F',
-                  fontWeight: '500',
-                }}
-              >
-                Partner Companies <ChevronDown size={14} color="var(--gold-dark)" />
-              </button>
-
-              {partnerDropdownOpen && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '120%',
-                    left: 0,
-                    background: '#FFFFFF',
-                    border: '1px solid rgba(0, 0, 0, 0.08)',
-                    borderRadius: '12px',
-                    padding: '0.6rem 0',
-                    width: '220px',
-                    boxShadow: '0 15px 35px rgba(0, 0, 0, 0.1)',
-                    zIndex: 200,
-                  }}
-                >
-                  <a
-                    href="/partners/infinity-water"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setPartnerDropdownOpen(false);
-                      navigateToInfinity();
-                    }}
-                    style={{
-                      width: '100%',
-                      padding: '0.7rem 1rem',
-                      background: 'none',
-                      border: 'none',
-                      textAlign: 'left',
-                      fontSize: '0.88rem',
-                      fontWeight: '600',
-                      color: '#0284C7',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.6rem',
-                      textDecoration: 'none',
-                    }}
-                  >
-                    <img src={infinityLogo} alt="Logo" style={{ width: '18px', height: '18px' }} />
-                    Infinity Water
-                  </a>
-                </div>
-              )}
-            </div>
-
             <a
-              href="#tab1"
-              onClick={() => setActiveTab('tab1')}
-              className={`apple-nav-tab ${activeTab === 'tab1' ? 'active' : ''}`}
+              href="#services"
+              onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="apple-nav-tab"
             >
-              Placeholder Tab 1
+              Services
             </a>
+
             <a
-              href="#tab2"
-              onClick={() => setActiveTab('tab2')}
-              className={`apple-nav-tab ${activeTab === 'tab2' ? 'active' : ''}`}
+              href="#vision"
+              onClick={(e) => { e.preventDefault(); document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="apple-nav-tab"
             >
-              Placeholder Tab 2
+              Vision
+            </a>
+
+            {/* Dedicated Digital Ventures / Infinity Water Tab */}
+            <a
+              href="/infinity-water"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateToInfinity();
+              }}
+              className="apple-nav-tab"
+              style={{
+                color: '#38BDF8',
+                fontWeight: '600',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                background: 'rgba(14, 165, 233, 0.1)',
+                border: '1px solid rgba(14, 165, 233, 0.25)',
+                padding: '0.35rem 0.85rem',
+                borderRadius: '980px',
+                transition: 'all 0.2s ease',
+              }}
+              title="View Infinity Water Dedicated App Subpage"
+            >
+              <img src={infinityLogo} alt="Infinity" style={{ width: '16px', height: '16px', borderRadius: '50%' }} />
+              <span>Digital Ventures</span>
+            </a>
+
+            <a
+              href="#contact"
+              onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="apple-nav-tab"
+            >
+              Contact Us
             </a>
           </nav>
 
-          {/* Mobile Toggle */}
+          {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            style={{ background: 'none', border: 'none', color: '#1D1D1F', cursor: 'pointer' }}
+            style={{ background: 'none', border: 'none', color: '#FFFFFF', cursor: 'pointer', padding: '0.3rem' }}
             className="mobile-toggle"
+            aria-label="Toggle Menu"
           >
-            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Dropdown Navigation Menu */}
         {mobileMenuOpen && (
           <div
             style={{
@@ -208,45 +205,82 @@ export default function App() {
               top: '100%',
               left: 0,
               right: 0,
-              background: '#FFFFFF',
-              borderBottom: '1px solid rgba(0, 0, 0, 0.08)',
+              background: 'rgba(10, 15, 26, 0.98)',
+              backdropFilter: 'blur(20px)',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
               padding: '1.5rem',
               display: 'flex',
               flexDirection: 'column',
-              gap: '1rem',
+              gap: '1.1rem',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.6)',
             }}
           >
-            <a href="#overview" onClick={() => setMobileMenuOpen(false)} style={{ textDecoration: 'none', color: '#1D1D1F', fontWeight: '500' }}>Overview</a>
-            
-            <div style={{ fontWeight: '700', color: 'var(--gold-dark)', fontSize: '0.85rem' }}>Partner Companies:</div>
             <a
-              href="/partners/infinity-water"
+              href="#overview"
+              onClick={(e) => { e.preventDefault(); document.getElementById('overview')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
+              style={{ textDecoration: 'none', color: '#FFFFFF', fontWeight: '500', fontSize: '1rem' }}
+            >
+              Home
+            </a>
+
+            <a
+              href="#services"
+              onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
+              style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.8)', fontSize: '1rem' }}
+            >
+              Services
+            </a>
+
+            <a
+              href="#vision"
+              onClick={(e) => { e.preventDefault(); document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
+              style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.8)', fontSize: '1rem' }}
+            >
+              Vision
+            </a>
+
+            <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)', margin: '0.2rem 0' }} />
+
+            <div style={{ fontWeight: '700', color: '#D4AF37', fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+              Featured Digital Venture:
+            </div>
+            <a
+              href="/infinity-water"
               onClick={(e) => {
                 e.preventDefault();
                 setMobileMenuOpen(false);
                 navigateToInfinity();
               }}
               style={{
-                background: 'rgba(2, 132, 199, 0.08)',
-                border: '1px solid rgba(2, 132, 199, 0.2)',
-                borderRadius: '8px',
-                padding: '0.7rem 1rem',
-                color: '#0284C7',
+                background: 'linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0.05) 100%)',
+                border: '1px solid rgba(14, 165, 233, 0.35)',
+                borderRadius: '12px',
+                padding: '0.85rem 1.1rem',
+                color: '#38BDF8',
                 fontWeight: '700',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.6rem',
+                gap: '0.75rem',
                 textDecoration: 'none',
               }}
             >
-              <img src={infinityLogo} alt="Logo" style={{ width: '18px', height: '18px' }} />
-              Infinity Water
+              <img src={infinityLogo} alt="Logo" style={{ width: '24px', height: '24px', borderRadius: '50%' }} />
+              <div>
+                <div style={{ fontSize: '0.95rem' }}>Digital Ventures: Infinity Water</div>
+                <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.5)', fontWeight: '400' }}>Wellness & Hydration Mobile App</div>
+              </div>
             </a>
 
-            <div style={{ height: '1px', background: 'rgba(0,0,0,0.06)' }} />
-            <a href="#tab1" onClick={() => setMobileMenuOpen(false)} style={{ textDecoration: 'none', color: '#1D1D1F' }}>Placeholder Tab 1</a>
-            <a href="#tab2" onClick={() => setMobileMenuOpen(false)} style={{ textDecoration: 'none', color: '#1D1D1F' }}>Placeholder Tab 2</a>
+            <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)', margin: '0.2rem 0' }} />
+
+            <a
+              href="#contact"
+              onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
+              style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.8)', fontSize: '1rem' }}
+            >
+              Contact Us
+            </a>
           </div>
         )}
 
@@ -258,164 +292,83 @@ export default function App() {
         `}</style>
       </header>
 
-      {/* Main Single Minimalist Content */}
-      <main style={{ paddingTop: '9rem', paddingBottom: '5rem', flexGrow: 1 }}>
-        <div className="container" style={{ textAlign: 'center' }}>
-          {/* Eyebrow */}
-          <div
-            style={{
-              fontSize: '0.95rem',
-              fontWeight: '600',
-              color: 'var(--gold-dark)',
-              letterSpacing: '0.04em',
-              marginBottom: '0.8rem',
-            }}
-          >
-            AVARA Sovereign.
-          </div>
-
-          {/* Main Title */}
-          <h1
-            style={{
-              fontSize: 'clamp(2.8rem, 6.5vw, 5.2rem)',
-              fontWeight: '700',
-              letterSpacing: '-0.03em',
-              color: '#1D1D1F',
-              lineHeight: 1.08,
-              marginBottom: '1.2rem',
-              maxWidth: '900px',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-            }}
-          >
-            Architecting Wealth. <br />
-            <span className="gold-gradient-text">Unmatched Alpha.</span>
-          </h1>
-
-          {/* Text Paragraph */}
-          <p
-            style={{
-              fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
-              color: '#6E6E73',
-              maxWidth: '720px',
-              margin: '0 auto 2.2rem auto',
-              lineHeight: 1.5,
-              fontWeight: '400',
-            }}
-          >
-            Pro private equity, frontier venture, and quantitative yield strategies crafted for family offices and sovereign clients.
-          </p>
-
-          {/* Buttons */}
-          <div style={{ display: 'flex', gap: '1.2rem', justifyContent: 'center', alignItems: 'center', marginBottom: '4rem' }}>
-            <button className="btn-apple-gold">
-              Placeholder Action
-            </button>
-            <a
-              href="#"
-              onClick={(e) => e.preventDefault()}
-              style={{
-                color: '#06c',
-                textDecoration: 'none',
-                fontSize: '0.95rem',
-                fontWeight: '500',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.2rem',
-              }}
-            >
-              Placeholder Link <ChevronRight size={16} />
-            </a>
-          </div>
-
-          {/* Partner Spotlight Banner */}
-          <div
-            onClick={navigateToInfinity}
-            style={{
-              background: 'linear-gradient(135deg, #0F172A 0%, #070F1B 100%)',
-              borderRadius: '24px',
-              padding: '2.5rem 2rem',
-              maxWidth: '850px',
-              margin: '0 auto 3rem auto',
-              color: '#FFFFFF',
-              cursor: 'pointer',
-              border: '1px solid rgba(14, 165, 233, 0.3)',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              flexWrap: 'wrap',
-              gap: '1.5rem',
-              textAlign: 'left',
-              transition: 'transform 0.3s ease',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
-              <img src={infinityLogo} alt="Infinity Water" style={{ width: '48px', height: '48px', borderRadius: '50%' }} />
-              <div>
-                <div style={{ fontSize: '0.75rem', color: '#38BDF8', fontWeight: '800', letterSpacing: '0.1em' }}>FEATURED PARTNER COMPANY</div>
-                <div style={{ fontSize: '1.4rem', fontWeight: '800', color: '#FFFFFF' }}>Infinity Water</div>
-                <div style={{ fontSize: '0.88rem', color: '#94A3B8' }}>Pure Hydration & Smart Mobile Delivery Platform</div>
-              </div>
-            </div>
-
-            <button className="btn-aqua-primary" style={{ background: '#0EA5E9', border: 'none', color: '#FFFFFF', padding: '0.7rem 1.4rem', borderRadius: '980px', fontWeight: '700', cursor: 'pointer', fontSize: '0.85rem' }}>
-              Visit Infinity Water →
-            </button>
-          </div>
-
-          {/* Single Placeholder Title & Text Paragraph Block */}
-          <div
-            style={{
-              background: '#F5F5F7',
-              borderRadius: '24px',
-              padding: '3.5rem 2.5rem',
-              maxWidth: '850px',
-              margin: '0 auto',
-              textAlign: 'center',
-            }}
-          >
-            <h2
-              style={{
-                fontSize: '1.8rem',
-                fontWeight: '700',
-                color: '#1D1D1F',
-                letterSpacing: '-0.02em',
-                marginBottom: '1rem',
-              }}
-            >
-              Placeholder Title
-            </h2>
-            <p
-              style={{
-                color: '#6E6E73',
-                fontSize: '1.02rem',
-                lineHeight: 1.6,
-                maxWidth: '680px',
-                margin: '0 auto',
-              }}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-          </div>
-        </div>
+      {/* Main Content Area - Scrollable Sections */}
+      <main style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+        <section id="overview">
+          <HomeView
+            navigateToInfinity={navigateToInfinity}
+            navigateToContact={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            navigateToServices={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+          />
+        </section>
+        <section id="services">
+          <ServicesView />
+        </section>
+        <section id="vision">
+          <VisionView />
+        </section>
+        {/* ─── FEATURED DIGITAL INITIATIVE: INFINITY WATER (Above Contact) ─── */}
+        <section id="digital-ventures">
+          <FeaturedDigitalInitiative navigateToInfinity={navigateToInfinity} />
+        </section>
+        <section id="contact">
+          <ContactView />
+        </section>
       </main>
 
-      {/* Simple Footer */}
+      {/* ─── PREMIUM FOOTER ─── */}
       <footer
         style={{
-          borderTop: '1px solid rgba(0,0,0,0.08)',
-          padding: '2rem 0',
-          textAlign: 'center',
-          color: '#86868B',
-          fontSize: '0.8rem',
-          background: '#F5F5F7',
+          background: 'linear-gradient(165deg, #0a0f1a 0%, #111827 100%)',
+          padding: '4rem 2rem 2rem',
+          color: 'rgba(255,255,255,0.5)',
+          fontSize: '0.85rem',
         }}
       >
-        <div className="container">
-          © {new Date().getFullYear()} AVARA Capital SA. All rights reserved. Partnered with Infinity Water.
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '3rem', marginBottom: '3rem' }}>
+            {/* Brand */}
+            <div style={{ maxWidth: '320px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.2rem' }}>
+                <img
+                  src={avaraLogo}
+                  alt="AVARA International"
+                  style={{ height: '44px', width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 2px 10px rgba(212, 175, 55, 0.25))' }}
+                />
+                <div>
+                  <div style={{ fontWeight: '800', fontSize: '1.15rem', color: '#FFFFFF', lineHeight: 1.1 }}>AVARA</div>
+                  <div style={{ fontSize: '0.62rem', color: '#D4AF37', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: '700' }}>International Co., Ltd.</div>
+                </div>
+              </div>
+              <p style={{ lineHeight: 1.6 }}>
+                A premier global trading and logistics conglomerate connecting markets and elevating commerce worldwide.
+              </p>
+            </div>
+            {/* Links */}
+            <div style={{ display: 'flex', gap: '4rem', flexWrap: 'wrap' }}>
+              <div>
+                <div style={{ fontWeight: '700', color: '#FFFFFF', marginBottom: '1rem', fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Navigation</div>
+                {['Home', 'Services', 'Vision', 'Contact'].map((l) => (
+                  <a key={l} href={`#${l.toLowerCase() === 'home' ? 'overview' : l.toLowerCase()}`} onClick={(e) => { e.preventDefault(); document.getElementById(l.toLowerCase() === 'home' ? 'overview' : l.toLowerCase())?.scrollIntoView({ behavior: 'smooth' }); }} style={{ display: 'block', color: 'rgba(255,255,255,0.5)', textDecoration: 'none', marginBottom: '0.6rem', transition: 'color 0.2s' }} onMouseEnter={(e) => (e.target.style.color = '#D4AF37')} onMouseLeave={(e) => (e.target.style.color = 'rgba(255,255,255,0.5)')}>{l}</a>
+                ))}
+              </div>
+              <div>
+                <div style={{ fontWeight: '700', color: '#FFFFFF', marginBottom: '1rem', fontSize: '0.8rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Digital Ventures</div>
+                <a href="/infinity-water" onClick={(e) => { e.preventDefault(); navigateToInfinity(); }} style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => (e.target.style.color = '#38BDF8')} onMouseLeave={(e) => (e.target.style.color = 'rgba(255,255,255,0.5)')}>Infinity Water</a>
+              </div>
+            </div>
+          </div>
+          {/* Bottom bar */}
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', fontSize: '0.78rem' }}>
+            <span>© {new Date().getFullYear()} AVARA International Co., Ltd. All rights reserved.</span>
+            <div style={{ display: 'flex', gap: '1.5rem' }}>
+              <a href="#" onClick={(e) => e.preventDefault()} style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>Privacy Policy</a>
+              <a href="#" onClick={(e) => e.preventDefault()} style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>Terms of Service</a>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
   );
 }
+

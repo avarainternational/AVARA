@@ -187,7 +187,7 @@ body {
 
 /* Apple Nav Tab Bar */
 .apple-nav-tab {
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 400;
@@ -197,8 +197,8 @@ body {
 }
 
 .apple-nav-tab:hover, .apple-nav-tab.active {
-  color: var(--text-primary);
-  background: rgba(0, 0, 0, 0.04);
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* Range Input Styling */
