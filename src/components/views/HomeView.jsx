@@ -90,36 +90,6 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
           <SpinningEarth3D />
         </div>
 
-        {/* ═══ LAYER 2.5: Gold Scale Image (Bottom Aligned to Left, Bigger on Desktop) ═══ */}
-        <div
-          className="hero-scale-img"
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            left: '-1%',
-            width: 'clamp(480px, 38vw, 750px)',
-            maxHeight: '110vh',
-            display: 'flex',
-            alignItems: 'flex-end',
-            zIndex: 2,
-            pointerEvents: 'none',
-            opacity: 0.65,
-          }}
-        >
-          <img
-            src="/assets/hero/scale.png"
-            alt=""
-            style={{
-              width: '100%',
-              height: 'auto',
-              maxHeight: '94vh',
-              objectFit: 'contain',
-              objectPosition: 'bottom left',
-              display: 'block',
-              filter: 'brightness(1.35) contrast(0.95)',
-            }}
-          />
-        </div>
 
         {/* ═══ LAYER 3: Hero Text Content (Rendered Normally On Top) ═══ */}
         <div
@@ -312,15 +282,6 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
             height: 480px !important;
             opacity: 0.6 !important;
           }
-          .hero-scale-img {
-            left: -3% !important;
-            right: auto !important;
-            transform: none !important;
-            bottom: 0 !important;
-            width: 320px !important;
-            max-height: 58vh !important;
-            opacity: 0.42 !important;
-          }
         }
         @media (max-width: 640px) {
           .hero-spinning-earth-bg {
@@ -329,16 +290,6 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
             width: 400px !important;
             height: 400px !important;
             opacity: 0.4 !important;
-          }
-          .hero-scale-img {
-            left: -6% !important;
-            right: auto !important;
-            transform: none !important;
-            bottom: 0 !important;
-            top: auto !important;
-            width: 290px !important;
-            max-height: 52vh !important;
-            opacity: 0.36 !important;
           }
         }
       `}</style>
