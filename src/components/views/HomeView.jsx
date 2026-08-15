@@ -101,11 +101,10 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
             padding: '0 2rem',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
             minHeight: 'calc(100vh - 8rem)',
           }}
         >
-          <div className="hero-text-block" style={{ textAlign: 'center', maxWidth: '720px' }}>
+          <div className="hero-text-block" style={{ textAlign: 'left', maxWidth: '680px' }}>
 
             <h1
               style={{
@@ -138,14 +137,14 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
                 lineHeight: 1.65,
                 fontWeight: '400',
                 maxWidth: '600px',
-                margin: '0 auto 2.5rem auto',
+                marginBottom: '2.5rem',
               }}
             >
               A premier global trading and logistics partner, delivering comprehensive supply chain, distribution, and business consulting solutions across borders.
             </p>
 
             {/* CTAs */}
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
               <button
                 onClick={navigateToServices}
                 style={{
