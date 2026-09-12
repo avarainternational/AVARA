@@ -47,12 +47,12 @@ export default function VisionView() {
   });
 
   return (
-    <div style={{ overflow: 'hidden' }}>
+    <div style={{ overflow: 'hidden', fontFamily: 'var(--font-sans)' }}>
       {/* ─── HERO BANNER ─── */}
       <section
         style={{
-          background: 'linear-gradient(165deg, #0a0f1a 0%, #111827 40%, #1a2540 100%)',
-          padding: 'clamp(8rem, 14vw, 12rem) 2rem clamp(4rem, 8vw, 7rem)',
+          background: 'linear-gradient(165deg, #070B14 0%, #0D1527 45%, #131F3B 100%)',
+          padding: 'clamp(5rem, 10vw, 9rem) 0 clamp(3rem, 6vw, 5rem)',
           textAlign: 'center',
           position: 'relative',
           overflow: 'hidden',
@@ -68,93 +68,79 @@ export default function VisionView() {
             pointerEvents: 'none',
           }}
         />
-        <div style={{ position: 'relative', zIndex: 2 }}>
-          <div
-            style={{
-              fontSize: '0.8rem',
-              fontWeight: '700',
-              color: '#D4AF37',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              marginBottom: '1.5rem',
-            }}
-          >
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          {/* Eyebrow */}
+          <div className="eyebrow-badge" style={{ marginBottom: '1rem' }}>
             Our Purpose
           </div>
+
+          {/* Hero H1 */}
           <h1
+            className="heading-hero"
             style={{
-              fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-              fontWeight: '700',
-              color: '#FFFFFF',
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              maxWidth: '800px',
-              margin: '0 auto 1.5rem',
+              maxWidth: '850px',
+              margin: '0 auto 1.3rem',
             }}
           >
             Building the Future of Global Commerce.
           </h1>
+
+          {/* Body Description */}
           <p
+            className="body-prose-dark"
             style={{
-              fontSize: '1.15rem',
-              color: 'rgba(255,255,255,0.5)',
-              maxWidth: '650px',
               margin: '0 auto',
-              lineHeight: 1.6,
             }}
           >
-            At AVARA, we believe that the flow of goods and services should be seamless, transparent, and empowering.
+            At AVARA, we believe that the flow of goods, ideas, and services should be seamless, transparent, and empowering for communities worldwide.
           </p>
         </div>
       </section>
 
-
-        {/* ─── MISSION STATEMENT ─── */}
+      {/* ─── MISSION STATEMENT ─── */}
       <section
         ref={(el) => (refs.current[11] = el)}
         data-idx="11"
         style={{
           background: '#FFFFFF',
-          padding: 'clamp(2rem, 4vw, 4rem) 2rem clamp(4rem, 8vw, 6rem)',
+          padding: 'clamp(3.5rem, 6vw, 5.5rem) 0',
           ...fadeStyle('11'),
         }}
       >
-        <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
+        <div className="container" style={{ maxWidth: '920px', textAlign: 'center' }}>
+          {/* Eyebrow */}
+          <div className="eyebrow-badge" style={{ marginBottom: '1rem' }}>
+            Long-Term Vision
+          </div>
+
           <h2
+            className="heading-section-light"
             style={{
-              fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
-              fontWeight: '700',
-              color: '#1D1D1F',
-              lineHeight: 1.2,
-              letterSpacing: '-0.02em',
-              marginBottom: '1.5rem',
+              marginBottom: '1.4rem',
             }}
           >
-            Our vision is to become the world's most trusted partner in international trade, logistics, and multi-industry investment.
+            To become the world's most trusted partner in international trade, logistics, and multi-industry investment.
           </h2>
-          <p style={{ color: '#6E6E73', fontSize: '1.1rem', lineHeight: 1.7 }}>
+
+          <p
+            className="body-prose-light"
+            style={{
+              margin: '0 auto',
+            }}
+          >
             We connect buyers and sellers, streamline complex supply chains, and open new markets — all while building lasting relationships rooted in trust, transparency, and shared success.
           </p>
         </div>
       </section>
 
       {/* ─── PILLARS ─── */}
-      <section style={{ background: '#F8F9FA', padding: 'clamp(4rem, 8vw, 7rem) 2rem' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <div
-              style={{
-                fontSize: '0.8rem',
-                fontWeight: '700',
-                color: '#D4AF37',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                marginBottom: '1rem',
-              }}
-            >
+      <section style={{ background: '#F8FAFC', padding: 'clamp(3.5rem, 6vw, 6rem) 0', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+        <div className="container" style={{ maxWidth: '1000px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <div className="eyebrow-badge" style={{ marginBottom: '0.8rem' }}>
               Strategic Pillars
             </div>
-            <h2 style={{ fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', fontWeight: '700', color: '#1D1D1F', letterSpacing: '-0.02em' }}>
+            <h2 className="heading-section-light">
               How We Achieve Our Vision
             </h2>
           </div>
@@ -165,15 +151,13 @@ export default function VisionView() {
                 key={idx}
                 ref={(el) => (refs.current[idx + 12] = el)}
                 data-idx={idx + 12}
+                className="pillar-card-responsive"
                 style={{
-                  display: 'grid',
-                  gridTemplateColumns: '80px 1fr',
-                  gap: '2rem',
                   alignItems: 'start',
                   background: '#FFFFFF',
-                  padding: '2.5rem',
                   borderRadius: '20px',
-                  border: '1px solid rgba(0,0,0,0.05)',
+                  border: '1px solid rgba(0,0,0,0.06)',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   ...fadeStyle(idx + 12, 0.12 * idx),
                 }}
@@ -183,16 +167,15 @@ export default function VisionView() {
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'none';
+                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.03)';
                 }}
               >
                 <div
+                  className="pillar-number-responsive"
                   style={{
-                    fontSize: '3rem',
-                    fontWeight: '800',
-                    background: 'linear-gradient(135deg, #D4AF37, #F0D78C)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: '700',
+                    color: '#C5A059',
                     lineHeight: 1,
                   }}
                 >
@@ -200,22 +183,47 @@ export default function VisionView() {
                 </div>
                 <div>
                   <h3
+                    className="heading-card"
                     style={{
-                      fontSize: '1.4rem',
-                      fontWeight: '700',
-                      color: '#1D1D1F',
-                      marginBottom: '0.8rem',
+                      color: '#0F172A',
+                      marginBottom: '0.65rem',
                     }}
                   >
                     {pillar.title}
                   </h3>
-                  <p style={{ color: '#6E6E73', lineHeight: 1.7, fontSize: '1rem' }}>{pillar.description}</p>
+                  <p className="body-prose-light">
+                    {pillar.description}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Component Specific Responsive Rules */}
+      <style>{`
+        .pillar-card-responsive {
+          display: flex;
+          flex-direction: column;
+          gap: 0.8rem;
+          padding: 1.25rem; /* 20px on mobile */
+        }
+        .pillar-number-responsive {
+          font-size: 2.2rem;
+        }
+        @media (min-width: 640px) {
+          .pillar-card-responsive {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 2.2rem;
+            padding: 2.4rem 2rem;
+          }
+          .pillar-number-responsive {
+            font-size: 2.8rem;
+          }
+        }
+      `}</style>
     </div>
   );
 }

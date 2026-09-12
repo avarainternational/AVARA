@@ -37,10 +37,11 @@ export default function Navbar({ navigateToInfinity, navigateToAvara }) {
         left: 0,
         right: 0,
         zIndex: 100,
-        background: 'rgba(10, 15, 26, 0.88)',
+        background: 'rgba(10, 15, 26, 0.92)',
         backdropFilter: 'saturate(180%) blur(20px)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-        padding: '0.75rem 0',
+        padding: '0.8rem 0',
+        fontFamily: 'var(--font-sans)',
       }}
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -62,21 +63,21 @@ export default function Navbar({ navigateToInfinity, navigateToAvara }) {
               height: '38px',
               width: 'auto',
               objectFit: 'contain',
-              filter: 'drop-shadow(0 2px 8px rgba(212, 175, 55, 0.35))',
+              filter: 'drop-shadow(0 2px 8px rgba(197, 160, 89, 0.35))',
             }}
           />
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontWeight: '800', fontSize: '1.08rem', letterSpacing: '0.01em', color: '#FFFFFF', lineHeight: 1.1 }}>
+            <span style={{ fontFamily: 'var(--font-display)', fontWeight: '700', fontSize: '1.15rem', letterSpacing: '-0.01em', color: '#FFFFFF', lineHeight: 1.1 }}>
               AVARA
             </span>
-            <span style={{ fontSize: '0.58rem', letterSpacing: '0.12em', color: '#D4AF37', textTransform: 'uppercase', fontWeight: '700' }}>
+            <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.62rem', letterSpacing: '0.15em', color: '#C5A059', textTransform: 'uppercase', fontWeight: '600' }}>
               International
             </span>
           </div>
         </a>
 
         {/* Desktop Nav Tabs */}
-        <nav style={{ display: 'none', gap: '0.5rem', alignItems: 'center' }} className="desktop-tabs">
+        <nav style={{ display: 'none', gap: '0.4rem', alignItems: 'center' }} className="desktop-tabs">
           <a
             href="#overview"
             onClick={handleHomeClick}
@@ -99,21 +100,30 @@ export default function Navbar({ navigateToInfinity, navigateToAvara }) {
             Vision
           </a>
 
-          {/* Digital Ventures Navigation Tab */}
+          {/* Digital Ventures Navigation Tab - Gold Aligned */}
           <a
             href="/infinity-water"
             onClick={handleInfinityClick}
             className="apple-nav-tab"
             style={{
-              color: '#38BDF8',
+              color: '#C5A059',
               fontWeight: '600',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.45rem',
-              background: 'rgba(14, 165, 233, 0.1)',
-              border: '1px solid rgba(14, 165, 233, 0.25)',
+              background: 'rgba(197, 160, 89, 0.15)',
+              border: '1px solid rgba(197, 160, 89, 0.35)',
               padding: '0.35rem 0.85rem',
               borderRadius: '980px',
+              transition: 'all 0.2s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(197, 160, 89, 0.25)';
+              e.currentTarget.style.borderColor = '#D4AF37';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(197, 160, 89, 0.15)';
+              e.currentTarget.style.borderColor = 'rgba(197, 160, 89, 0.35)';
             }}
           >
             <img src={infinityLogo} alt="Infinity" style={{ width: '16px', height: '16px', borderRadius: '50%' }} />
@@ -132,7 +142,18 @@ export default function Navbar({ navigateToInfinity, navigateToAvara }) {
         {/* Mobile Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          style={{ background: 'none', border: 'none', color: '#FFFFFF', cursor: 'pointer' }}
+          style={{
+            background: 'none',
+            border: 'none',
+            color: '#FFFFFF',
+            cursor: 'pointer',
+            padding: '0.4rem',
+            minWidth: '44px',
+            minHeight: '44px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
           className="mobile-toggle"
           aria-label="Toggle Menu"
         >
@@ -151,46 +172,51 @@ export default function Navbar({ navigateToInfinity, navigateToAvara }) {
             background: 'rgba(10, 15, 26, 0.98)',
             backdropFilter: 'blur(20px)',
             borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-            padding: '1.5rem',
+            padding: '1.25rem 1.5rem',
             display: 'flex',
             flexDirection: 'column',
-            gap: '1.1rem',
+            gap: '0.5rem',
+            fontFamily: 'var(--font-sans)',
           }}
         >
           <a
             href="#overview"
             onClick={handleHomeClick}
-            style={{ textDecoration: 'none', color: '#FFFFFF', fontSize: '1rem', fontWeight: '500' }}
+            style={{ textDecoration: 'none', color: '#F8FAFC', fontSize: '1rem', fontWeight: '500', minHeight: '44px', display: 'flex', alignItems: 'center' }}
           >
             Home
           </a>
           <a
             href="#services"
             onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
-            style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.8)', fontSize: '1rem' }}
+            style={{ textDecoration: 'none', color: '#CBD5E1', fontSize: '1rem', fontWeight: '500', minHeight: '44px', display: 'flex', alignItems: 'center' }}
           >
             Services
           </a>
           <a
             href="#vision"
             onClick={(e) => { e.preventDefault(); document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
-            style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.8)', fontSize: '1rem' }}
+            style={{ textDecoration: 'none', color: '#CBD5E1', fontSize: '1rem', fontWeight: '500', minHeight: '44px', display: 'flex', alignItems: 'center' }}
           >
             Vision
           </a>
 
-          <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)' }} />
+          <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)', margin: '0.25rem 0' }} />
 
+          <div style={{ fontFamily: 'var(--font-display)', fontWeight: '600', color: '#C5A059', fontSize: '0.6875rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+            Featured Digital Venture
+          </div>
           <a
             href="/infinity-water"
             onClick={handleInfinityClick}
             style={{
-              background: 'linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0.05) 100%)',
-              border: '1px solid rgba(14, 165, 233, 0.35)',
+              background: 'rgba(197, 160, 89, 0.12)',
+              border: '1px solid rgba(197, 160, 89, 0.35)',
               borderRadius: '12px',
               padding: '0.85rem 1.1rem',
-              color: '#38BDF8',
-              fontWeight: '700',
+              minHeight: '48px',
+              color: '#C5A059',
+              fontWeight: '600',
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
@@ -200,17 +226,17 @@ export default function Navbar({ navigateToInfinity, navigateToAvara }) {
           >
             <img src={infinityLogo} alt="Logo" style={{ width: '22px', height: '22px', borderRadius: '50%' }} />
             <div>
-              <div style={{ fontSize: '0.95rem' }}>Digital Ventures: Infinity Water</div>
-              <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.5)', fontWeight: '400' }}>Wellness & Hydration Mobile App</div>
+              <div style={{ fontSize: '0.95rem', fontWeight: '600' }}>Digital Ventures: Infinity Water</div>
+              <div style={{ fontSize: '0.75rem', color: '#CBD5E1', fontWeight: '400', marginTop: '2px' }}>Wellness & Hydration Mobile App</div>
             </div>
           </a>
 
-          <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)' }} />
+          <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)', margin: '0.25rem 0' }} />
 
           <a
             href="#contact"
             onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
-            style={{ textDecoration: 'none', color: 'rgba(255,255,255,0.8)', fontSize: '1rem' }}
+            style={{ textDecoration: 'none', color: '#CBD5E1', fontSize: '1rem', fontWeight: '500', minHeight: '44px', display: 'flex', alignItems: 'center' }}
           >
             Contact Us
           </a>
@@ -226,4 +252,3 @@ export default function Navbar({ navigateToInfinity, navigateToAvara }) {
     </header>
   );
 }
-

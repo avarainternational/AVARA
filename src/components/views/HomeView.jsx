@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { ChevronRight, ArrowDown } from 'lucide-react';
 import SpinningEarth3D from '../SpinningEarth3D';
 
-export default function HomeView({ navigateToInfinity, navigateToContact, navigateToServices }) {
+export default function HomeView({ _navigateToInfinity, navigateToContact, navigateToServices }) {
   const [visible, setVisible] = useState({});
   const refs = useRef([]);
 
@@ -33,7 +33,7 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
       <section
         style={{
           minHeight: '100vh',
-          background: 'linear-gradient(165deg, #0a0f1a 0%, #111827 40%, #1a2540 100%)',
+          background: 'linear-gradient(165deg, #070B14 0%, #0D1527 45%, #131F3B 100%)',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -41,10 +41,10 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
           position: 'relative',
           overflow: 'hidden',
           paddingTop: '5.5rem',
-          paddingBottom: '3rem',
+          paddingBottom: '3.5rem',
         }}
       >
-        {/* ═══ LAYER 1 (Base): Geometric Grid Background ═══ */}
+        {/* ═══ LAYER 1: Geometric Grid Background ═══ */}
         <div
           style={{
             position: 'absolute',
@@ -56,14 +56,14 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
             pointerEvents: 'none',
           }}
         />
-        {/* Subtle radial ambient glow on the right behind globe */}
+        {/* Radial ambient glow behind globe */}
         <div
           style={{
             position: 'absolute',
             width: '700px',
             height: '700px',
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, rgba(212, 175, 55, 0.06) 40%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, rgba(11, 19, 43, 0.05) 50%, transparent 70%)',
             top: '50%',
             right: '-5%',
             transform: 'translateY(-50%)',
@@ -72,7 +72,7 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
           }}
         />
 
-        {/* ═══ LAYER 2: 3D Spinning Globe (Right Side, Half Visible) ═══ */}
+        {/* ═══ LAYER 2: 3D Spinning Globe (Right Side) ═══ */}
         <div
           className="hero-spinning-earth-bg"
           style={{
@@ -90,37 +90,44 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
           <SpinningEarth3D />
         </div>
 
-
-        {/* ═══ LAYER 3: Hero Text Content (Rendered Normally On Top) ═══ */}
+        {/* ═══ LAYER 3: Hero Content ═══ */}
         <div
+          className="container hero-content-padding"
           style={{
             position: 'relative',
             zIndex: 3,
             width: '100%',
-            maxWidth: '1240px',
-            padding: '0 2rem',
             display: 'flex',
             alignItems: 'center',
             minHeight: 'calc(100vh - 8rem)',
           }}
         >
-          <div className="hero-text-block" style={{ textAlign: 'left', maxWidth: '680px' }}>
-
-            <h1
+          <div className="hero-text-block" style={{ textAlign: 'left', maxWidth: '680px', width: '100%' }}>
+            {/* Eyebrow: 11px on mobile with 0.08em tracking to eliminate line wraps */}
+            <div
+              className="eyebrow-badge"
               style={{
-                fontSize: 'clamp(2.8rem, 5.5vw, 4.6rem)',
-                fontWeight: '700',
-                letterSpacing: '-0.03em',
-                color: '#FFFFFF',
-                lineHeight: 1.08,
-                marginBottom: '1.5rem',
+                marginBottom: '1rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+              }}
+            >
+              <span>Global Enterprise Conglomerate</span>
+            </div>
+
+            {/* H1 Hero Title: 32px-36px mobile (tight 1.18 line-height), 52px desktop */}
+            <h1
+              className="heading-hero"
+              style={{
+                marginBottom: '1.3rem',
               }}
             >
               Connecting Markets.
               <br />
               <span
                 style={{
-                  background: 'linear-gradient(90deg, #D4AF37, #F0D78C, #D4AF37)',
+                  background: 'linear-gradient(135deg, #D4AF37 0%, #F0D78C 50%, #C5A059 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                 }}
@@ -129,66 +136,28 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
               </span>
             </h1>
 
-            {/* Subheadline */}
+            {/* Subheadline: 15px mobile with 1.6 line height, 16px desktop with 1.65 line height */}
             <p
+              className="body-prose-dark"
               style={{
-                fontSize: 'clamp(1.05rem, 1.4vw, 1.2rem)',
-                color: 'rgba(255,255,255,0.6)',
-                lineHeight: 1.65,
-                fontWeight: '400',
-                maxWidth: '600px',
-                marginBottom: '2.5rem',
+                marginBottom: '2.2rem',
               }}
             >
-              A premier global trading and logistics partner, delivering comprehensive supply chain, distribution, and business consulting solutions across borders.
+              A premier global trading, logistics, and venture partner, delivering end-to-end supply chain integration, distribution channels, and strategic cross-border solutions.
             </p>
 
-            {/* CTAs */}
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
+            {/* CTAs: Stack full width with 48px touch targets on mobile, horizontal on desktop */}
+            <div className="cta-button-group">
               <button
                 onClick={navigateToServices}
-                style={{
-                  background: 'linear-gradient(135deg, #D4AF37 0%, #C5A059 100%)',
-                  color: '#FFFFFF',
-                  fontWeight: '600',
-                  fontSize: '0.9rem',
-                  padding: '0.85rem 2rem',
-                  borderRadius: '980px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  boxShadow: '0 4px 20px rgba(212, 175, 55, 0.3)',
-                  transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-2px)')}
-                onMouseLeave={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
+                className="btn-gold btn-responsive"
               >
                 Explore Our Services
               </button>
+
               <button
                 onClick={navigateToContact}
-                style={{
-                  background: 'rgba(255,255,255,0.08)',
-                  color: '#FFFFFF',
-                  fontWeight: '500',
-                  fontSize: '0.9rem',
-                  padding: '0.85rem 2rem',
-                  borderRadius: '980px',
-                  border: '1px solid rgba(255,255,255,0.15)',
-                  cursor: 'pointer',
-                  backdropFilter: 'blur(10px)',
-                  transition: 'all 0.3s ease',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.4rem',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.14)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
-                }}
+                className="btn-outline btn-responsive"
               >
                 Contact Us <ChevronRight size={16} />
               </button>
@@ -196,7 +165,7 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
           </div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll Indicator */}
         <div
           style={{
             position: 'absolute',
@@ -207,9 +176,11 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
             flexDirection: 'column',
             alignItems: 'center',
             gap: '0.4rem',
-            color: 'rgba(255,255,255,0.3)',
+            color: 'rgba(255,255,255,0.4)',
             fontSize: '0.72rem',
-            letterSpacing: '0.12em',
+            fontFamily: 'var(--font-display)',
+            fontWeight: '600',
+            letterSpacing: '0.15em',
             animation: 'pulse 2s infinite',
             zIndex: 3,
           }}
@@ -225,41 +196,35 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
         data-idx="2"
         style={{
           background: '#FFFFFF',
-          padding: 'clamp(4rem, 8vw, 8rem) 2rem',
+          padding: 'clamp(3.5rem, 6vw, 6.5rem) 0',
           ...fadeStyle('2'),
         }}
       >
-        <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
+        <div className="container" style={{ maxWidth: '960px', textAlign: 'center' }}>
+          {/* Eyebrow */}
           <div
+            className="eyebrow-badge"
             style={{
-              fontSize: '0.8rem',
-              fontWeight: '700',
-              color: '#D4AF37',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              marginBottom: '1.5rem',
+              marginBottom: '1rem',
             }}
           >
             Who We Are
           </div>
+
+          {/* Section H2: 24px-28px mobile, 36px desktop */}
           <h2
+            className="heading-section-light"
             style={{
-              fontSize: 'clamp(2rem, 4vw, 3.2rem)',
-              fontWeight: '700',
-              color: '#1D1D1F',
-              lineHeight: 1.15,
-              letterSpacing: '-0.02em',
-              marginBottom: '1.5rem',
+              marginBottom: '1.4rem',
             }}
           >
             Comprehensive Cross-Border Solutions for a Connected World
           </h2>
+
+          {/* Body Text: 15px mobile, 16px desktop, 65ch line length limit */}
           <p
+            className="body-prose-light"
             style={{
-              fontSize: '1.1rem',
-              color: '#6E6E73',
-              lineHeight: 1.7,
-              maxWidth: '750px',
               margin: '0 auto',
             }}
           >
@@ -271,8 +236,8 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
       {/* Responsive & Animation Keyframes */}
       <style>{`
         @keyframes pulse {
-          0%, 100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
-          50% { opacity: 0.8; transform: translateX(-50%) translateY(6px); }
+          0%, 100% { opacity: 0.35; transform: translateX(-50%) translateY(0); }
+          50% { opacity: 0.85; transform: translateX(-50%) translateY(6px); }
         }
         @media (max-width: 960px) {
           .hero-spinning-earth-bg {
@@ -284,11 +249,15 @@ export default function HomeView({ navigateToInfinity, navigateToContact, naviga
         }
         @media (max-width: 640px) {
           .hero-spinning-earth-bg {
-            right: -30% !important;
+            right: -35% !important;
             top: 50% !important;
-            width: 400px !important;
-            height: 400px !important;
-            opacity: 0.4 !important;
+            width: 320px !important;
+            height: 320px !important;
+            opacity: 0.25 !important;
+          }
+          .hero-content-padding {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
           }
         }
       `}</style>

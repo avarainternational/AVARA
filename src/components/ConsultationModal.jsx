@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, ChevronRight } from 'lucide-react';
+import { X, CheckCircle2 } from 'lucide-react';
 
 export default function ConsultationModal({ isOpen, onClose, mode = 'access' }) {
   const [submitted, setSubmitted] = useState(false);

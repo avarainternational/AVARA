@@ -1,36 +1,50 @@
-/* AVARA Capital - Apple-Inspired Minimalist Design System */
+/* AVARA International - Premium Corporate Design System */
 
 :root {
-  /* Apple Color Palette */
+  /* Surface & Background */
   --bg-void: #FFFFFF;
-  --bg-surface: #F5F5F7;
-  --bg-card: #F5F5F7;
+  --bg-surface: #F8FAFC;
+  --bg-card: #FFFFFF;
   --bg-card-alt: #FAFAFC;
-  --bg-nav: rgba(255, 255, 255, 0.8);
+  --bg-nav: rgba(10, 15, 26, 0.88);
   
-  /* Text */
-  --text-primary: #1D1D1F;
-  --text-secondary: #6E6E73;
-  --text-dim: #86868B;
+  /* Text & Contrast Hierarchy (WCAG AA Compliant) */
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-dim: #64748B;
   --border-subtle: rgba(0, 0, 0, 0.08);
 
   /* Gold Assets & Accents */
   --gold-primary: #C5A059;
+  --gold-hover: #D4AF37;
   --gold-bright: #D4AF37;
   --gold-dark: #9A7828;
   --gold-light: #FBF6EB;
-  --gold-border: rgba(197, 160, 89, 0.3);
+  --gold-border: rgba(197, 160, 89, 0.4);
+  --gold-badge-bg: rgba(197, 160, 89, 0.15);
+  --gold-badge-border: rgba(197, 160, 89, 0.35);
   --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #C5A059 100%);
-  --gold-gradient-text: linear-gradient(135deg, #B8860B 0%, #C5A059 100%);
+  --gold-gradient-text: linear-gradient(135deg, #D4AF37 0%, #F0D78C 50%, #C5A059 100%);
 
-  /* Typography */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
-  --font-serif: 'Cinzel', serif;
+  /* Navy & Dark Theme System */
+  --navy-deep: #0B132B;
+  --slate-dark: #0F172A;
+  --slate-card: #1E293B;
+  --slate-body-light: #475569;
+  --slate-body-dark: #94A3B8;
+  --slate-nav: #CBD5E1;
+  --slate-white: #F8FAFC;
 
-  /* Apple Card Radius & Shadows */
-  --radius-card: 18px;
+  /* Typography Specification */
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Radii & Shadows */
+  --radius-card: 20px;
   --radius-pill: 980px;
   --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --shadow-gold: 0 4px 20px rgba(197, 160, 89, 0.3);
 }
 
 * {
@@ -46,12 +60,43 @@ html {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
   overflow-x: hidden;
+  width: 100%;
   background: var(--bg-void);
   min-height: 100vh;
+  font-family: var(--font-sans);
+}
+
+/* Headings inherit display font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* Form controls inherit sans font & iOS Safari Auto-Zoom Prevention */
+input, textarea, select, button {
+  font-family: var(--font-sans);
+}
+
+/* Strict mobile specification: at least 16px font size to prevent iOS Safari auto-zoom */
+input, textarea, select {
+  font-size: 16px !important;
+}
+
+/* Ensure placeholder text meets contrast standards (WCAG AA) */
+::placeholder {
+  color: #64748B;
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  color: #64748B;
+}
+::-ms-input-placeholder {
+  color: #64748B;
 }
 
 /* Custom Scrollbar */
@@ -59,10 +104,10 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-surface);
+  background: #0F172A;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(197, 160, 89, 0.3);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -77,121 +122,299 @@ body {
   display: inline-block;
 }
 
-/* Apple Pill Buttons */
-.btn-apple-primary {
-  background: #1D1D1F;
-  color: #FFFFFF;
-  font-weight: 500;
-  font-size: 0.88rem;
-  padding: 0.75rem 1.6rem;
-  border-radius: var(--radius-pill);
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  text-decoration: none;
-}
+/* ─── RESPONSIVE TYPOGRAPHIC SCALE CLASSES ─── */
 
-.btn-apple-primary:hover {
-  background: #333336;
-  transform: scale(1.02);
-}
-
-.btn-apple-gold {
-  background: var(--gold-gradient);
-  color: #FFFFFF;
+/* Eyebrows: 11px on mobile with 0.08em tracking to eliminate line wraps; 12px & 0.15em on desktop */
+.eyebrow-badge {
+  font-family: var(--font-display);
+  font-size: 0.6875rem; /* 11px mobile */
+  letter-spacing: 0.08em; /* reduced mobile tracking prevents multi-line wrapping */
   font-weight: 600;
-  font-size: 0.88rem;
-  padding: 0.75rem 1.6rem;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  display: inline-block;
+  line-height: 1.25;
+}
+
+@media (min-width: 640px) {
+  .eyebrow-badge {
+    font-size: 0.75rem; /* 12px desktop */
+    letter-spacing: 0.15em;
+  }
+}
+
+/* H1 Hero Title: 32px-36px mobile (tight 1.18 line-height), 52px desktop (1.15 line-height) */
+.heading-hero {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw + 1rem, 3.25rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+@media (min-width: 640px) {
+  .heading-hero {
+    line-height: 1.15;
+  }
+}
+
+/* H2 Section Titles: 24px-28px mobile, 36px desktop */
+.heading-section {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw + 0.75rem, 2.25rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--slate-white);
+}
+
+.heading-section-light {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw + 0.75rem, 2.25rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--slate-dark);
+}
+
+/* H3 Card & Feature Headings: 18px-20px mobile, 20px-22px desktop */
+.heading-card {
+  font-family: var(--font-display);
+  font-size: clamp(1.125rem, 1.5vw + 0.85rem, 1.375rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* Body copy: 15px mobile with 1.6 line height, 16px desktop with 1.65 line height */
+.body-prose-dark {
+  font-family: var(--font-sans);
+  font-size: clamp(0.9375rem, 0.5vw + 0.82rem, 1rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--slate-body-dark);
+  max-width: 65ch;
+}
+
+@media (min-width: 640px) {
+  .body-prose-dark {
+    line-height: 1.65;
+  }
+}
+
+.body-prose-light {
+  font-family: var(--font-sans);
+  font-size: clamp(0.9375rem, 0.5vw + 0.82rem, 1rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--slate-body-light);
+  max-width: 65ch;
+}
+
+@media (min-width: 640px) {
+  .body-prose-light {
+    line-height: 1.65;
+  }
+}
+
+/* Navigation Links */
+.nav-link-item {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--slate-nav);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.nav-link-item:hover {
+  color: #FFFFFF;
+}
+
+/* ─── MOBILE TOUCH TARGETS & BUTTON SYSTEM ─── */
+
+/* Button Group: Stacks vertically (w-full) on mobile, inline row on desktop */
+.cta-button-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .cta-button-group {
+    flex-direction: row;
+    width: auto;
+    gap: 1rem;
+  }
+}
+
+/* Primary Button & CTA: High contrast WCAG AA (#0B132B on #C5A059) */
+.btn-gold, .btn-apple-gold {
+  background: var(--gold-primary);
+  color: var(--navy-deep);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.8rem;
+  min-height: 48px; /* Strict mobile touch target */
   border-radius: var(--radius-pill);
   border: none;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  box-shadow: 0 4px 14px rgba(197, 160, 89, 0.25);
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 18px rgba(197, 160, 89, 0.3);
   text-decoration: none;
+  box-sizing: border-box;
 }
 
-.btn-apple-gold:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
+/* Mobile full width helper */
+.btn-responsive {
+  width: 100%;
 }
 
-.btn-apple-secondary {
-  background: rgba(0, 0, 0, 0.05);
-  color: var(--text-primary);
+@media (min-width: 640px) {
+  .btn-responsive {
+    width: auto;
+  }
+}
+
+.btn-gold:hover, .btn-apple-gold:hover {
+  background: var(--gold-hover);
+  color: var(--navy-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(197, 160, 89, 0.45);
+}
+
+/* Secondary / Outline Button */
+.btn-outline, .btn-apple-secondary {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--slate-white);
+  font-family: var(--font-sans);
   font-weight: 500;
-  font-size: 0.88rem;
-  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.8rem;
+  min-height: 48px; /* Strict mobile touch target */
   border-radius: var(--radius-pill);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--gold-border);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(10px);
   text-decoration: none;
+  box-sizing: border-box;
 }
 
-.btn-apple-secondary:hover {
-  background: rgba(0, 0, 0, 0.08);
-  border-color: rgba(0, 0, 0, 0.15);
+.btn-outline:hover, .btn-apple-secondary:hover {
+  background: rgba(197, 160, 89, 0.12);
+  border-color: var(--gold-primary);
+  color: #FFFFFF;
+  transform: translateY(-2px);
 }
 
-/* Apple Style Card */
+/* Digital Ventures Gold Pill */
+.digital-ventures-pill {
+  color: var(--gold-primary);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--gold-badge-bg);
+  border: 1px solid var(--gold-badge-border);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  min-height: 38px;
+}
+
+.digital-ventures-pill:hover {
+  background: rgba(197, 160, 89, 0.25);
+  border-color: var(--gold-primary);
+  color: #FFFFFF;
+}
+
+/* ─── RESPONSIVE LAYOUT & CONTAINER UTILITIES ─── */
+
+/* Container: 16px padding on mobile (< 640px), 32px on desktop */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-left: 1rem;  /* 16px on mobile */
+  padding-right: 1rem; /* 16px on mobile */
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 2rem;  /* 32px on desktop */
+    padding-right: 2rem; /* 32px on desktop */
+  }
+}
+
+.section-padding {
+  padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+}
+
+/* Responsive Card: 20px internal padding on mobile, 32px-40px on desktop */
+.responsive-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-card);
+  padding: 1.25rem; /* 20px on mobile */
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@media (min-width: 640px) {
+  .responsive-card {
+    padding: 2.2rem 2rem; /* desktop breathing room */
+  }
+}
+
+.responsive-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+}
+
+/* Apple Card Legacy Support */
 .apple-card {
   background: var(--bg-card);
   border-radius: var(--radius-card);
-  padding: 2.5rem 2rem;
+  padding: 1.25rem;
   transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
+@media (min-width: 640px) {
+  .apple-card {
+    padding: 2.5rem 2rem;
+  }
+}
+
 .apple-card:hover {
-  transform: scale(1.01);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
 }
 
-/* Placeholder Box */
-.placeholder-asset {
-  background: linear-gradient(135deg, #FBF6EB 0%, #F5EAD4 50%, #E8D3AA 100%);
-  border: 1px dashed var(--gold-border);
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2.5rem 1.5rem;
-  color: var(--gold-dark);
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-align: center;
-  gap: 0.5rem;
-}
-
-/* Layout Utilities */
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.section-padding {
-  padding: 5.5rem 0;
-}
-
-/* Apple Nav Tab Bar */
+/* Navigation Tab Bar */
 .apple-nav-tab {
-  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-sans);
+  color: var(--slate-nav);
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 400;
-  padding: 0.4rem 0.8rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.45rem 0.9rem;
   border-radius: var(--radius-pill);
   transition: all 0.2s ease;
 }
@@ -201,40 +424,25 @@ body {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Range Input Styling */
-input[type=range] {
-  -webkit-appearance: none;
+/* Form Controls System */
+.form-input-control {
   width: 100%;
-  background: transparent;
-}
-
-input[type=range]:focus {
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
   outline: none;
-}
-
-input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 4px;
-  cursor: pointer;
-  background: #E5E5EA;
-  border-radius: 2px;
-}
-
-input[type=range]::-webkit-slider-thumb {
-  height: 22px;
-  width: 22px;
-  border-radius: 50%;
+  font-size: 16px; /* 16px prevents iOS Safari focus zoom */
+  font-family: var(--font-sans);
+  color: var(--slate-dark);
   background: #FFFFFF;
-  border: 2px solid var(--gold-primary);
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -9px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease;
+  min-height: 48px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
 }
 
-input[type=range]::-webkit-slider-thumb:hover {
-  transform: scale(1.15);
+.form-input-control:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
 }
 
 /* Modal Overlay */
@@ -244,11 +452,11 @@ input[type=range]::-webkit-slider-thumb:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(12px);
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 1rem;
 }

@@ -9,7 +9,7 @@ import consultingImg from '../../assets/services/consulting.jpg';
 const services = [
   {
     icon: <Globe2 size={22} />,
-    color: '#0EA5E9',
+    color: '#C5A059',
     image: globalTradingImg || '/assets/services/global-trading.jpg',
     title: 'Global Trading & Distribution',
     description:
@@ -18,7 +18,7 @@ const services = [
   },
   {
     icon: <Truck size={22} />,
-    color: '#8B5CF6',
+    color: '#C5A059',
     image: logisticsImg || '/assets/services/logistics.jpg',
     title: 'End-to-End Logistics',
     description:
@@ -27,7 +27,7 @@ const services = [
   },
   {
     icon: <Building2 size={22} />,
-    color: '#F59E0B',
+    color: '#C5A059',
     image: realEstateImg || '/assets/services/real-estate.jpg',
     title: 'Real Estate & Properties',
     description:
@@ -36,7 +36,7 @@ const services = [
   },
   {
     icon: <ShoppingBag size={22} />,
-    color: '#10B981',
+    color: '#C5A059',
     image: ecommerceImg || '/assets/services/ecommerce.jpg',
     title: 'E-Commerce & Retail',
     description:
@@ -45,7 +45,7 @@ const services = [
   },
   {
     icon: <Package size={22} />,
-    color: '#EC4899',
+    color: '#C5A059',
     image: consultingImg || '/assets/services/consulting.jpg',
     title: 'Business Consulting',
     description:
@@ -80,12 +80,12 @@ export default function ServicesView() {
   });
 
   return (
-    <div style={{ overflow: 'hidden' }}>
+    <div style={{ overflow: 'hidden', fontFamily: 'var(--font-sans)' }}>
       {/* ─── HERO BANNER ─── */}
       <section
         style={{
-          background: 'linear-gradient(165deg, #0a0f1a 0%, #111827 40%, #1a2540 100%)',
-          padding: 'clamp(8rem, 14vw, 12rem) 2rem clamp(4rem, 8vw, 7rem)',
+          background: 'linear-gradient(165deg, #070B14 0%, #0D1527 45%, #131F3B 100%)',
+          padding: 'clamp(5rem, 10vw, 9rem) 0 clamp(3rem, 6vw, 5rem)',
           textAlign: 'center',
           position: 'relative',
           overflow: 'hidden',
@@ -101,57 +101,39 @@ export default function ServicesView() {
             pointerEvents: 'none',
           }}
         />
-        <div style={{ position: 'relative', zIndex: 2 }}>
-          <div
-            style={{
-              fontSize: '0.8rem',
-              fontWeight: '700',
-              color: '#D4AF37',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              marginBottom: '1.5rem',
-            }}
-          >
+        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+          {/* Eyebrow: 11px mobile, 0.08em tracking */}
+          <div className="eyebrow-badge" style={{ marginBottom: '1rem' }}>
             What We Do
           </div>
+
+          {/* Hero H1: fluid clamp */}
           <h1
+            className="heading-hero"
             style={{
-              fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-              fontWeight: '700',
-              color: '#FFFFFF',
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              marginBottom: '1.5rem',
-              maxWidth: '800px',
-              margin: '0 auto 1.5rem',
+              maxWidth: '850px',
+              margin: '0 auto 1.3rem',
             }}
           >
-            Our Capabilities
+            Our Core Capabilities
           </h1>
+
+          {/* Body: fluid 15px-16px, 65ch line length limit */}
           <p
+            className="body-prose-dark"
             style={{
-              fontSize: '1.15rem',
-              color: 'rgba(255,255,255,0.5)',
-              maxWidth: '650px',
               margin: '0 auto',
-              lineHeight: 1.6,
             }}
           >
-            A comprehensive suite of services designed to bridge global markets and deliver unmatched value across industries.
+            A comprehensive suite of institutional services engineered to bridge global markets and deliver unmatched operational value across industries.
           </p>
         </div>
       </section>
 
       {/* ─── SERVICES GRID WITH IMAGES ─── */}
-      <section style={{ background: '#FFFFFF', padding: 'clamp(4rem, 8vw, 7rem) 2rem' }}>
-        <div style={{ maxWidth: '1140px', margin: '0 auto' }}>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(330px, 1fr))',
-              gap: '2.5rem',
-            }}
-          >
+      <section style={{ background: '#F8FAFC', padding: 'clamp(3.5rem, 6vw, 6rem) 0' }}>
+        <div className="container">
+          <div className="services-responsive-grid">
             {services.map((service, idx) => (
               <div
                 key={idx}
@@ -160,9 +142,9 @@ export default function ServicesView() {
                 className="service-card-item"
                 style={{
                   background: '#FFFFFF',
-                  borderRadius: '24px',
+                  borderRadius: '20px',
                   overflow: 'hidden',
-                  border: '1px solid rgba(0,0,0,0.08)',
+                  border: '1px solid rgba(0,0,0,0.06)',
                   boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
                   transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
                   display: 'flex',
@@ -170,10 +152,10 @@ export default function ServicesView() {
                   ...fadeStyle(idx, 0.08 * idx),
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-8px)';
-                  e.currentTarget.style.boxShadow = '0 24px 48px rgba(0,0,0,0.12)';
+                  e.currentTarget.style.transform = 'translateY(-6px)';
+                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.08)';
                   const img = e.currentTarget.querySelector('.service-card-img');
-                  if (img) img.style.transform = 'scale(1.08)';
+                  if (img) img.style.transform = 'scale(1.06)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
@@ -182,14 +164,14 @@ export default function ServicesView() {
                   if (img) img.style.transform = 'scale(1)';
                 }}
               >
-                {/* Visual Category Image Banner */}
+                {/* Visual Image Banner */}
                 <div
                   style={{
                     position: 'relative',
-                    height: '210px',
+                    height: '200px',
                     width: '100%',
                     overflow: 'hidden',
-                    background: '#0F172A',
+                    background: '#0B132B',
                   }}
                 >
                   <img
@@ -203,7 +185,6 @@ export default function ServicesView() {
                       transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
                     }}
                     onError={(e) => {
-                      // Fallback gracefully
                       e.target.style.opacity = '0.9';
                     }}
                   />
@@ -213,7 +194,7 @@ export default function ServicesView() {
                     style={{
                       position: 'absolute',
                       inset: 0,
-                      background: 'linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(10, 15, 26, 0.6) 100%)',
+                      background: 'linear-gradient(180deg, rgba(11, 19, 43, 0.1) 0%, rgba(11, 19, 43, 0.65) 100%)',
                     }}
                   />
 
@@ -223,16 +204,16 @@ export default function ServicesView() {
                       position: 'absolute',
                       top: '1rem',
                       left: '1rem',
-                      width: '44px',
-                      height: '44px',
+                      width: '42px',
+                      height: '42px',
                       borderRadius: '12px',
-                      background: 'rgba(10, 15, 26, 0.8)',
+                      background: 'rgba(11, 19, 43, 0.85)',
                       backdropFilter: 'blur(12px)',
-                      border: `1px solid ${service.color}60`,
+                      border: '1px solid rgba(197, 160, 89, 0.35)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: service.color,
+                      color: '#C5A059',
                       boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
                     }}
                   >
@@ -240,36 +221,31 @@ export default function ServicesView() {
                   </div>
                 </div>
 
-                {/* Card Content Body */}
+                {/* Card Content Body: 20px internal padding on mobile, 32px on desktop */}
                 <div
+                  className="service-card-body"
                   style={{
-                    padding: '2rem 1.8rem 2.2rem',
                     display: 'flex',
                     flexDirection: 'column',
                     flexGrow: 1,
                   }}
                 >
-                  {/* Title */}
+                  {/* H3 Title: fluid clamp 18px-22px, weight 600 */}
                   <h3
+                    className="heading-card"
                     style={{
-                      fontSize: '1.35rem',
-                      fontWeight: '700',
-                      color: '#1D1D1F',
-                      marginBottom: '0.85rem',
-                      letterSpacing: '-0.02em',
-                      lineHeight: 1.25,
+                      color: '#0F172A',
+                      marginBottom: '0.75rem',
                     }}
                   >
                     {service.title}
                   </h3>
 
-                  {/* Description */}
+                  {/* Description: fluid 15px-16px, 1.6-1.65 line-height, #475569 */}
                   <p
+                    className="body-prose-light"
                     style={{
-                      color: '#6E6E73',
-                      lineHeight: 1.65,
-                      fontSize: '0.95rem',
-                      marginBottom: '1.5rem',
+                      marginBottom: '1.4rem',
                       flexGrow: 1,
                     }}
                   >
@@ -282,14 +258,14 @@ export default function ServicesView() {
                       <span
                         key={i}
                         style={{
-                          fontSize: '0.72rem',
-                          fontWeight: '600',
-                          color: service.color,
-                          background: `${service.color}12`,
-                          border: `1px solid ${service.color}25`,
+                          fontFamily: 'var(--font-sans)',
+                          fontSize: '0.75rem',
+                          fontWeight: '500',
+                          color: '#0F172A',
+                          background: 'rgba(197, 160, 89, 0.12)',
+                          border: '1px solid rgba(197, 160, 89, 0.3)',
                           padding: '0.35rem 0.75rem',
                           borderRadius: '980px',
-                          letterSpacing: '0.02em',
                         }}
                       >
                         {tag}
@@ -306,39 +282,65 @@ export default function ServicesView() {
       {/* ─── CTA BANNER ─── */}
       <section
         style={{
-          background: '#F8F9FA',
-          padding: 'clamp(4rem, 8vw, 6rem) 2rem',
+          background: '#FFFFFF',
+          padding: 'clamp(3.5rem, 6vw, 5.5rem) 0',
           textAlign: 'center',
+          borderTop: '1px solid rgba(0,0,0,0.06)',
         }}
       >
-        <div style={{ maxWidth: '700px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: '700', color: '#1D1D1F', marginBottom: '1rem' }}>
+        <div className="container" style={{ maxWidth: '750px' }}>
+          {/* Eyebrow */}
+          <div className="eyebrow-badge" style={{ marginBottom: '0.9rem' }}>
+            Partner With Us
+          </div>
+
+          <h2
+            className="heading-section-light"
+            style={{
+              marginBottom: '1.1rem',
+            }}
+          >
             Ready to scale your business globally?
           </h2>
-          <p style={{ color: '#6E6E73', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '2rem' }}>
-            Let us help you navigate international markets with confidence.
+
+          <p
+            className="body-prose-light"
+            style={{
+              margin: '0 auto 2rem',
+            }}
+          >
+            Let our international trade and supply chain specialists help you navigate cross-border opportunities with confidence.
           </p>
+
           <button
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            style={{
-              background: 'linear-gradient(135deg, #D4AF37 0%, #C5A059 100%)',
-              color: '#FFFFFF',
-              fontWeight: '600',
-              fontSize: '0.9rem',
-              padding: '0.85rem 2.2rem',
-              borderRadius: '980px',
-              border: 'none',
-              cursor: 'pointer',
-              boxShadow: '0 4px 20px rgba(212, 175, 55, 0.3)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-            }}
+            className="btn-gold btn-responsive"
           >
             Get in Touch <ChevronRight size={16} />
           </button>
         </div>
       </section>
+
+      {/* Component Specific Responsive Rules */}
+      <style>{`
+        .services-responsive-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        .service-card-body {
+          padding: 1.25rem; /* 20px mobile breathing room */
+        }
+        @media (min-width: 640px) {
+          .services-responsive-grid {
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+          }
+          .service-card-body {
+            padding: 2rem 1.8rem 2.2rem;
+          }
+        }
+      `}</style>
     </div>
   );
 }
