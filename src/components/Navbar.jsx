@@ -106,24 +106,24 @@ export default function Navbar({ navigateToInfinity, navigateToAvara }) {
             onClick={handleInfinityClick}
             className="apple-nav-tab"
             style={{
-              color: '#C5A059',
+              color: '#0EA5E9',
               fontWeight: '600',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.45rem',
-              background: 'rgba(197, 160, 89, 0.15)',
-              border: '1px solid rgba(197, 160, 89, 0.35)',
+              background: 'rgba(14, 165, 233, 0.15)',
+              border: '1px solid rgba(14, 165, 233, 0.35)',
               padding: '0.35rem 0.85rem',
               borderRadius: '980px',
               transition: 'all 0.2s ease',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(197, 160, 89, 0.25)';
-              e.currentTarget.style.borderColor = '#D4AF37';
+              e.currentTarget.style.background = 'rgba(14, 165, 233, 0.25)';
+              e.currentTarget.style.borderColor = '#38BDF8';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(197, 160, 89, 0.15)';
-              e.currentTarget.style.borderColor = 'rgba(197, 160, 89, 0.35)';
+              e.currentTarget.style.background = 'rgba(14, 165, 233, 0.15)';
+              e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.35)';
             }}
           >
             <img src={infinityLogo} alt="Infinity" style={{ width: '16px', height: '16px', borderRadius: '50%' }} />
@@ -203,19 +203,19 @@ export default function Navbar({ navigateToInfinity, navigateToAvara }) {
 
           <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)', margin: '0.25rem 0' }} />
 
-          <div style={{ fontFamily: 'var(--font-display)', fontWeight: '600', color: '#C5A059', fontSize: '0.6875rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontWeight: '600', color: '#0EA5E9', fontSize: '0.6875rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
             Featured Digital Venture
           </div>
           <a
             href="/infinity-water"
             onClick={handleInfinityClick}
             style={{
-              background: 'rgba(197, 160, 89, 0.12)',
-              border: '1px solid rgba(197, 160, 89, 0.35)',
+              background: 'rgba(14, 165, 233, 0.12)',
+              border: '1px solid rgba(14, 165, 233, 0.35)',
               borderRadius: '12px',
               padding: '0.85rem 1.1rem',
               minHeight: '48px',
-              color: '#C5A059',
+              color: '#38BDF8',
               fontWeight: '600',
               cursor: 'pointer',
               display: 'flex',

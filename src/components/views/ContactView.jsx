@@ -114,29 +114,96 @@ export default function ContactView() {
                 marginBottom: '0.8rem',
               }}
             >
-              Global Headquarters & Inquiries
+              Head Office & Corporate Inquiries
             </h2>
 
             <p className="body-prose-light" style={{ marginBottom: '2.2rem' }}>
-              Our executive team and cross-border specialists are ready to discuss your next strategic project or distribution partnership.
+              Our executive team and cross-border specialists are ready to discuss your next strategic project, venture investment, or regional enterprise partnership.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.6rem' }}>
               {[
                 {
                   icon: <MapPin size={22} />,
-                  title: 'Headquarters',
-                  text: '123 Global Commerce Blvd\nSuite 500\nBusiness District, 10000',
+                  title: 'Head Office',
+                  content: (
+                    <div>
+                      <div style={{ fontWeight: '600', color: '#0F172A', marginBottom: '0.2rem' }}>
+                        AVARA CO., LTD.
+                      </div>
+                      <div>
+                        No.11/2, Building P23, Sukhumvit Soi 23,<br />
+                        Klong Toei Nua Subdistrict, Watthana District,<br />
+                        Bangkok 10110, Thailand
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  icon: <Phone size={22} />,
+                  title: 'Telephone',
+                  content: (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+                      <a
+                        href="tel:+66943178943"
+                        style={{
+                          color: '#0F172A',
+                          textDecoration: 'none',
+                          fontWeight: '500',
+                          transition: 'color 0.2s',
+                        }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = '#C5A059')}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = '#0F172A')}
+                      >
+                        +66-9-43178943
+                      </a>
+                      <a
+                        href="tel:+66946767344"
+                        style={{
+                          color: '#0F172A',
+                          textDecoration: 'none',
+                          fontWeight: '500',
+                          transition: 'color 0.2s',
+                        }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = '#C5A059')}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = '#0F172A')}
+                      >
+                        +66-9-46767344
+                      </a>
+                    </div>
+                  ),
                 },
                 {
                   icon: <Mail size={22} />,
                   title: 'Email Us',
-                  text: 'contact@avara-global.com\npartnerships@avara-global.com',
-                },
-                {
-                  icon: <Phone size={22} />,
-                  title: 'Call Us',
-                  text: '+1 (555) 123-4567\nMon-Fri, 9am — 6pm',
+                  content: (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
+                      <a
+                        href="mailto:contact@avara-global.com"
+                        style={{
+                          color: '#0F172A',
+                          textDecoration: 'none',
+                          transition: 'color 0.2s',
+                        }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = '#C5A059')}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = '#0F172A')}
+                      >
+                        contact@avara-global.com
+                      </a>
+                      <a
+                        href="mailto:partnerships@avara-global.com"
+                        style={{
+                          color: '#0F172A',
+                          textDecoration: 'none',
+                          transition: 'color 0.2s',
+                        }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = '#C5A059')}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = '#0F172A')}
+                      >
+                        partnerships@avara-global.com
+                      </a>
+                    </div>
+                  ),
                 },
               ].map((item, i) => (
                 <div key={i} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
@@ -169,9 +236,9 @@ export default function ContactView() {
                     >
                       {item.title}
                     </h4>
-                    <p style={{ fontFamily: 'var(--font-sans)', color: '#475569', lineHeight: 1.55, fontSize: '0.92rem', whiteSpace: 'pre-line' }}>
-                      {item.text}
-                    </p>
+                    <div style={{ fontFamily: 'var(--font-sans)', color: '#475569', lineHeight: 1.55, fontSize: '0.92rem' }}>
+                      {item.content}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -308,11 +375,12 @@ export default function ContactView() {
                     e.target.style.boxShadow = 'none';
                   }}
                 >
-                  <option>Global Trading & Distribution</option>
-                  <option>End-to-End Logistics & Freight</option>
-                  <option>Real Estate & Properties</option>
-                  <option>E-Commerce & Retail Partnerships</option>
-                  <option>Business Consulting</option>
+                  <option>Investment & Capital Deployment (Connecting Investors & Companies)</option>
+                  <option>Logistics & Medicine Supply Chain</option>
+                  <option>International Healthcare Facilitation (Top Thailand Hospitals)</option>
+                  <option>Real Estate in Thailand</option>
+                  <option>Business Consulting & Market Entry</option>
+                  <option>E-Commerce & Retail Distribution</option>
                   <option>Strategic Venture Opportunity</option>
                 </select>
               </div>

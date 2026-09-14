@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, Smartphone, Droplets, ShieldCheck, Zap, Sparkles } from 'lucide-react';
-import infinityLogoImport from '../assets/infinity/logo.png';
+import infinityBottleImport from '../assets/infinity/bottle.png';
+import infinityWaterImport from '../assets/infinity/infinity.png';
+import infinityBothImport from '../assets/infinity/both.png';
 
-const infinityLogo = infinityLogoImport || '/infinity/logo.png';
+const infinityBottle = infinityBottleImport || '/infinity/bottle.png';
+const infinityWater = infinityWaterImport || '/infinity/infinity.png';
+const infinityBoth = infinityBothImport || '/infinity/both.png';
+
+const showcaseImages = [
+  { src: infinityBottle, alt: 'Infinity Water Premium Bottle' },
+  { src: infinityWater, alt: 'Infinity Water Hydration Wellness' },
+  { src: infinityBoth, alt: 'Infinity Water Complete Care Collection' },
+];
 
 export default function FeaturedDigitalInitiative({ navigateToInfinity }) {
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveImageIndex((prev) => (prev + 1) % showcaseImages.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
+
   const handleNavigate = (e) => {
     if (e) e.preventDefault();
     if (navigateToInfinity) {
@@ -18,7 +37,7 @@ export default function FeaturedDigitalInitiative({ navigateToInfinity }) {
     <section
       id="digital-ventures"
       style={{
-        background: 'linear-gradient(165deg, #070B14 0%, #0D1527 50%, #070F1B 100%)',
+        background: 'linear-gradient(165deg, #070B14 0%, #07172A 50%, #051121 100%)',
         position: 'relative',
         overflow: 'hidden',
         padding: 'clamp(4rem, 7vw, 7rem) 0',
@@ -27,14 +46,14 @@ export default function FeaturedDigitalInitiative({ navigateToInfinity }) {
         fontFamily: 'var(--font-sans)',
       }}
     >
-      {/* Ambient background glow effects */}
+      {/* Ambient background glow effects - Infinity Blue */}
       <div
         style={{
           position: 'absolute',
           width: '600px',
           height: '600px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(197, 160, 89, 0.08) 0%, rgba(14, 165, 233, 0.05) 50%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(2, 66, 110, 0.06) 50%, transparent 70%)',
           top: '20%',
           right: '-10%',
           filter: 'blur(60px)',
@@ -47,7 +66,7 @@ export default function FeaturedDigitalInitiative({ navigateToInfinity }) {
           width: '400px',
           height: '400px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(197, 160, 89, 0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 70%)',
           bottom: '10%',
           left: '-5%',
           filter: 'blur(50px)',
@@ -77,12 +96,20 @@ export default function FeaturedDigitalInitiative({ navigateToInfinity }) {
         <div className="digital-initiative-grid">
           {/* Left Column: Text & CTA */}
           <div>
-            {/* Eyebrow / Badges: 11px mobile, 0.08em tracking */}
-            <div className="eyebrow-badge" style={{ marginBottom: '1rem' }}>
+            {/* Eyebrow / Badges: Infinity Blue Accent */}
+            <div
+              className="eyebrow-badge infinity-eyebrow-badge"
+              style={{
+                marginBottom: '1rem',
+                background: 'rgba(14, 165, 233, 0.12)',
+                border: '1px solid rgba(14, 165, 233, 0.35)',
+                color: '#38BDF8',
+              }}
+            >
               Main Focused Project • Strategic Partner Venture
             </div>
 
-            {/* Headline H2: fluid clamp */}
+            {/* Headline H2: fluid clamp with Infinity Cyan-Blue Gradient */}
             <h2
               className="heading-section"
               style={{
@@ -92,7 +119,7 @@ export default function FeaturedDigitalInitiative({ navigateToInfinity }) {
               Featured Digital Initiative: <br />
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #D4AF37 0%, #F0D78C 50%, #C5A059 100%)',
+                  background: 'linear-gradient(135deg, #38BDF8 0%, #0EA5E9 50%, #0284C7 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                 }}
@@ -115,22 +142,22 @@ export default function FeaturedDigitalInitiative({ navigateToInfinity }) {
             <div className="digital-highlights-grid">
               {[
                 {
-                  icon: <Droplets size={16} color="#C5A059" />,
+                  icon: <Droplets size={16} color="#0EA5E9" />,
                   title: 'Smart Hydration Reminders',
                   desc: 'Mindful daily intake prompts tailored to your lifestyle',
                 },
                 {
-                  icon: <Sparkles size={16} color="#C5A059" />,
+                  icon: <Sparkles size={16} color="#0EA5E9" />,
                   title: 'Family & Relations Care Circle',
                   desc: 'Send caring hydration nudges to loved ones',
                 },
                 {
-                  icon: <Zap size={16} color="#C5A059" />,
+                  icon: <Zap size={16} color="#0EA5E9" />,
                   title: 'Curated Health & Wellness News',
                   desc: 'Daily verified tips on health, nutrition & energy',
                 },
                 {
-                  icon: <ShieldCheck size={16} color="#C5A059" />,
+                  icon: <ShieldCheck size={16} color="#0EA5E9" />,
                   title: 'Care-First Philosophy',
                   desc: 'Supporting community health & long-term well-being',
                 },
@@ -150,7 +177,8 @@ export default function FeaturedDigitalInitiative({ navigateToInfinity }) {
                   <div
                     style={{
                       marginTop: '2px',
-                      background: 'rgba(197, 160, 89, 0.12)',
+                      background: 'rgba(14, 165, 233, 0.12)',
+                      border: '1px solid rgba(14, 165, 233, 0.25)',
                       padding: '0.35rem',
                       borderRadius: '8px',
                       display: 'flex',
@@ -175,11 +203,11 @@ export default function FeaturedDigitalInitiative({ navigateToInfinity }) {
 
             {/* Action Buttons: Stacking on mobile, inline on desktop */}
             <div className="cta-button-group" style={{ alignItems: 'stretch' }}>
-              {/* Primary Gold CTA */}
+              {/* Primary Infinity Blue CTA */}
               <a
                 href="/infinity-water"
                 onClick={handleNavigate}
-                className="btn-gold btn-responsive cta-infinity-button"
+                className="btn-infinity-blue btn-responsive cta-infinity-button"
               >
                 <span>Discover the Wellness App</span>
                 <ArrowRight size={18} />
@@ -197,7 +225,7 @@ export default function FeaturedDigitalInitiative({ navigateToInfinity }) {
                   minHeight: '48px',
                   borderRadius: '980px',
                   background: 'rgba(255, 255, 255, 0.04)',
-                  border: '1px solid rgba(197, 160, 89, 0.35)',
+                  border: '1px solid rgba(14, 165, 233, 0.35)',
                   color: '#CBD5E1',
                   fontSize: '0.82rem',
                   fontFamily: 'var(--font-sans)',
@@ -205,7 +233,7 @@ export default function FeaturedDigitalInitiative({ navigateToInfinity }) {
                 }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#F8FAFC', fontWeight: '500' }}>
-                  <Smartphone size={14} color="#C5A059" /> iOS & Android App
+                  <Smartphone size={14} color="#38BDF8" /> iOS & Android App
                 </span>
                 <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'rgba(255,255,255,0.3)' }} />
                 <span>Free Companion</span>
@@ -213,276 +241,102 @@ export default function FeaturedDigitalInitiative({ navigateToInfinity }) {
             </div>
           </div>
 
-          {/* Right Column: Smartphone Mockup Visual */}
+          {/* Right Column: Rotating 3-Image Showcase (Carousel) */}
           <div
             style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
+              textAlign: 'center',
               position: 'relative',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              width: '100%',
               marginTop: '1.5rem',
             }}
           >
-            {/* Device Glow Behind Phone */}
+            {/* Ambient Radial Glow Behind Images - Infinity Blue */}
             <div
               style={{
                 position: 'absolute',
-                width: '300px',
-                height: '480px',
-                borderRadius: '48px',
-                background: 'radial-gradient(circle, rgba(197, 160, 89, 0.15) 0%, rgba(14, 165, 233, 0.08) 50%, transparent 80%)',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: 'min(340px, 80vw)',
+                height: 'min(340px, 80vw)',
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(14, 165, 233, 0.25) 0%, rgba(2, 66, 110, 0.1) 60%, transparent 75%)',
                 filter: 'blur(35px)',
                 pointerEvents: 'none',
               }}
             />
 
-            {/* Smartphone Mockup Frame */}
+            {/* Carousel Container */}
             <div
-              className="smartphone-mockup"
+              className="infinity-showcase-container"
               onClick={handleNavigate}
-              style={{
-                width: '100%',
-                maxWidth: 'clamp(270px, 85vw, 320px)',
-                background: '#0F172A',
-                borderRadius: '42px',
-                padding: '11px',
-                border: '3px solid #334155',
-                boxShadow:
-                  '0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.1), inset 0 0 15px rgba(0,0,0,0.8)',
-                position: 'relative',
-                cursor: 'pointer',
-                transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease',
-              }}
-              title="Click to view Infinity Water mobile application details"
+              style={{ cursor: 'pointer' }}
+              title="Click to view Infinity Water dedicated application"
             >
-              {/* Dynamic Island / Camera Notch */}
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '18px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '90px',
-                  height: '20px',
-                  background: '#020617',
-                  borderRadius: '12px',
-                  zIndex: 20,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '0 8px',
-                }}
-              >
-                <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#1E293B' }} />
-                <div style={{ width: '9px', height: '9px', borderRadius: '50%', background: '#0F172A', border: '1px solid #1E293B' }} />
-              </div>
+              {showcaseImages.map((image, idx) => {
+                const isActive = activeImageIndex === idx;
+                return (
+                  <img
+                    key={idx}
+                    src={image.src}
+                    alt={image.alt}
+                    style={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      maxHeight: '92%',
+                      maxWidth: '90%',
+                      objectFit: 'contain',
+                      transform: isActive
+                        ? 'translate(-50%, -50%) scale(1) translateY(0px)'
+                        : 'translate(-50%, -50%) scale(0.92) translateY(16px)',
+                      opacity: isActive ? 1 : 0,
+                      filter: isActive
+                        ? 'drop-shadow(0 16px 35px rgba(14, 165, 233, 0.45)) drop-shadow(0 4px 12px rgba(0,0,0,0.6))'
+                        : 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2))',
+                      transition: 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.65s ease',
+                      pointerEvents: isActive ? 'auto' : 'none',
+                      zIndex: isActive ? 2 : 1,
+                    }}
+                  />
+                );
+              })}
+            </div>
 
-              {/* Phone Screen Canvas */}
-              <div
-                style={{
-                  background: 'linear-gradient(180deg, #070F1B 0%, #0B192C 100%)',
-                  borderRadius: '34px',
-                  padding: '2.2rem 1.1rem 1.4rem',
-                  overflow: 'hidden',
-                  position: 'relative',
-                  border: '1px solid rgba(197, 160, 89, 0.25)',
-                  color: '#F0F9FF',
-                }}
-              >
-                {/* Mockup Status Bar */}
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    fontSize: '0.68rem',
-                    fontWeight: '600',
-                    color: '#94A3B8',
-                    marginBottom: '1rem',
-                    padding: '0 0.4rem',
+            {/* Slide Navigation Indicator Pills */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                marginTop: '0.8rem',
+                zIndex: 5,
+              }}
+            >
+              {showcaseImages.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveImageIndex(idx);
                   }}
-                >
-                  <span>9:41</span>
-                  <div style={{ display: 'flex', gap: '0.35rem', alignItems: 'center' }}>
-                    <span>5G</span>
-                    <div style={{ width: '16px', height: '9px', border: '1px solid #94A3B8', borderRadius: '2px', padding: '1px' }}>
-                      <div style={{ width: '80%', height: '100%', background: '#C5A059', borderRadius: '1px' }} />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Mockup App Header */}
-                <div
+                  aria-label={`Go to slide ${idx + 1}`}
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    marginBottom: '1.2rem',
+                    width: activeImageIndex === idx ? '28px' : '8px',
+                    height: '8px',
+                    borderRadius: '4px',
+                    background: activeImageIndex === idx ? 'linear-gradient(90deg, #38BDF8, #0EA5E9)' : 'rgba(255, 255, 255, 0.2)',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    transition: 'all 0.35s ease',
+                    boxShadow: activeImageIndex === idx ? '0 0 10px rgba(14, 165, 233, 0.7)' : 'none',
                   }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <img
-                      src={infinityLogo}
-                      alt="Infinity Water"
-                      style={{
-                        width: '26px',
-                        height: '26px',
-                        borderRadius: '50%',
-                        border: '1px solid rgba(197, 160, 89, 0.5)',
-                      }}
-                    />
-                    <div>
-                      <div style={{ fontSize: '0.78rem', fontWeight: '800', letterSpacing: '0.04em', color: '#FFFFFF', lineHeight: 1 }}>
-                        INFINITY <span style={{ color: '#C5A059' }}>WATER</span>
-                      </div>
-                      <div style={{ fontSize: '0.62rem', color: '#94A3B8', marginTop: '2px' }}>
-                        Wellness & Care
-                      </div>
-                    </div>
-                  </div>
-
-                  <span
-                    style={{
-                      fontSize: '0.65rem',
-                      color: '#C5A059',
-                      background: 'rgba(197, 160, 89, 0.15)',
-                      padding: '0.2rem 0.55rem',
-                      borderRadius: '980px',
-                      fontWeight: '600',
-                      border: '1px solid rgba(197, 160, 89, 0.3)',
-                    }}
-                  >
-                    Caring for You
-                  </span>
-                </div>
-
-                {/* Hydration Circular Gauge Card */}
-                <div
-                  style={{
-                    background: 'rgba(197, 160, 89, 0.08)',
-                    border: '1px solid rgba(197, 160, 89, 0.25)',
-                    borderRadius: '18px',
-                    padding: '1.1rem 1rem',
-                    textAlign: 'center',
-                    marginBottom: '0.8rem',
-                    position: 'relative',
-                  }}
-                >
-                  <div style={{ fontSize: '0.68rem', color: '#94A3B8', fontWeight: '500', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                    Your Daily Hydration
-                  </div>
-                  <div
-                    style={{
-                      fontSize: '1.8rem',
-                      fontWeight: '800',
-                      color: '#FFFFFF',
-                      marginTop: '0.2rem',
-                      letterSpacing: '-0.02em',
-                    }}
-                  >
-                    1,850 <span style={{ fontSize: '0.9rem', fontWeight: '500', color: '#C5A059' }}>/ 2,400 ml</span>
-                  </div>
-
-                  {/* Visual Progress Bar */}
-                  <div
-                    style={{
-                      height: '7px',
-                      background: '#1E293B',
-                      borderRadius: '4px',
-                      margin: '0.6rem auto 0.3rem',
-                      overflow: 'hidden',
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: '77%',
-                        height: '100%',
-                        background: 'linear-gradient(90deg, #D4AF37 0%, #C5A059 100%)',
-                        borderRadius: '4px',
-                      }}
-                    />
-                  </div>
-
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.66rem', color: '#94A3B8' }}>
-                    <span>77% Reached</span>
-                    <span style={{ color: '#C5A059', fontWeight: '600' }}>Great Energy!</span>
-                  </div>
-                </div>
-
-                {/* Family Care Circle & Health Brief Widgets */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '0.55rem', marginBottom: '0.8rem' }}>
-                  {/* Family Care Widget */}
-                  <div
-                    style={{
-                      background: '#0F172A',
-                      border: '1px solid rgba(197, 160, 89, 0.2)',
-                      borderRadius: '12px',
-                      padding: '0.65rem 0.75rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <span style={{ fontSize: '1rem' }}>❤️</span>
-                      <div>
-                        <div style={{ fontSize: '0.72rem', fontWeight: '700', color: '#F0F9FF' }}>Family Care Circle</div>
-                        <div style={{ fontSize: '0.62rem', color: '#94A3B8' }}>Mom reminded to drink water</div>
-                      </div>
-                    </div>
-                    <span style={{ fontSize: '0.62rem', color: '#C5A059', fontWeight: '600', background: 'rgba(197, 160, 89, 0.15)', padding: '0.2rem 0.45rem', borderRadius: '6px' }}>
-                      Nudged ✓
-                    </span>
-                  </div>
-
-                  {/* Health News Brief */}
-                  <div
-                    style={{
-                      background: '#0F172A',
-                      border: '1px solid rgba(255, 255, 255, 0.06)',
-                      borderRadius: '12px',
-                      padding: '0.6rem 0.75rem',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.62rem', color: '#C5A059', fontWeight: '700', textTransform: 'uppercase' }}>
-                      <span>📰</span> Daily Health Tip
-                    </div>
-                    <div style={{ fontSize: '0.72rem', color: '#CBD5E1', marginTop: '0.2rem', lineHeight: 1.3 }}>
-                      "Proper hydration enhances focus and reduces stress by 25%."
-                    </div>
-                  </div>
-                </div>
-
-                {/* In-App Quick Log & Care Check-in Button */}
-                <div
-                  style={{
-                    background: 'linear-gradient(135deg, #D4AF37 0%, #C5A059 100%)',
-                    borderRadius: '12px',
-                    padding: '0.65rem',
-                    textAlign: 'center',
-                    fontSize: '0.76rem',
-                    fontWeight: '700',
-                    color: '#0B132B',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '0.4rem',
-                  }}
-                >
-                  <Droplets size={14} /> Log 250ml & Send Care Check
-                </div>
-              </div>
-
-              {/* Bottom Home Indicator Bar */}
-              <div
-                style={{
-                  width: '110px',
-                  height: '4px',
-                  background: '#64748B',
-                  borderRadius: '2px',
-                  margin: '8px auto 2px',
-                }}
-              />
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -516,11 +370,20 @@ export default function FeaturedDigitalInitiative({ navigateToInfinity }) {
         }
         .cta-infinity-button:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(197, 160, 89, 0.4) !important;
+          box-shadow: 0 8px 25px rgba(14, 165, 233, 0.5) !important;
         }
-        .smartphone-mockup:hover {
-          transform: translateY(-6px) scale(1.02);
-          box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(197, 160, 89, 0.35), inset 0 0 15px rgba(0,0,0,0.8) !important;
+        .infinity-showcase-container {
+          position: relative;
+          width: 100%;
+          max-width: 440px;
+          height: clamp(300px, 70vw, 480px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 0.35s ease;
+        }
+        .infinity-showcase-container:hover {
+          transform: translateY(-4px);
         }
       `}</style>
     </section>

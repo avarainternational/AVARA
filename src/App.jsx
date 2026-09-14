@@ -144,7 +144,7 @@ export default function App() {
               Vision
             </a>
 
-            {/* Dedicated Digital Ventures / Infinity Water Tab - Aligned Gold Tag */}
+            {/* Dedicated Digital Ventures / Infinity Water Tab - Infinity Logo Blue */}
             <a
               href="/infinity-water"
               onClick={(e) => {
@@ -153,24 +153,24 @@ export default function App() {
               }}
               className="apple-nav-tab"
               style={{
-                color: '#C5A059',
+                color: '#0EA5E9',
                 fontWeight: '600',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.45rem',
-                background: 'rgba(197, 160, 89, 0.15)',
-                border: '1px solid rgba(197, 160, 89, 0.35)',
+                background: 'rgba(14, 165, 233, 0.15)',
+                border: '1px solid rgba(14, 165, 233, 0.35)',
                 padding: '0.35rem 0.85rem',
                 borderRadius: '980px',
                 transition: 'all 0.2s ease',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(197, 160, 89, 0.25)';
-                e.currentTarget.style.borderColor = '#D4AF37';
+                e.currentTarget.style.background = 'rgba(14, 165, 233, 0.25)';
+                e.currentTarget.style.borderColor = '#38BDF8';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(197, 160, 89, 0.15)';
-                e.currentTarget.style.borderColor = 'rgba(197, 160, 89, 0.35)';
+                e.currentTarget.style.background = 'rgba(14, 165, 233, 0.15)';
+                e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.35)';
               }}
               title="View Infinity Water Dedicated App Subpage"
             >
@@ -278,7 +278,7 @@ export default function App() {
 
             <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)', margin: '0.25rem 0' }} />
 
-            <div style={{ fontFamily: 'var(--font-display)', fontWeight: '600', color: '#C5A059', fontSize: '0.6875rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+            <div style={{ fontFamily: 'var(--font-display)', fontWeight: '600', color: '#0EA5E9', fontSize: '0.6875rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
               Featured Digital Venture
             </div>
             <a
@@ -289,12 +289,12 @@ export default function App() {
                 navigateToInfinity();
               }}
               style={{
-                background: 'rgba(197, 160, 89, 0.12)',
-                border: '1px solid rgba(197, 160, 89, 0.35)',
+                background: 'rgba(14, 165, 233, 0.12)',
+                border: '1px solid rgba(14, 165, 233, 0.35)',
                 borderRadius: '12px',
                 padding: '0.85rem 1.1rem',
                 minHeight: '48px',
-                color: '#C5A059',
+                color: '#38BDF8',
                 fontWeight: '600',
                 cursor: 'pointer',
                 display: 'flex',
@@ -385,15 +385,15 @@ export default function App() {
                 />
                 <div>
                   <div style={{ fontFamily: 'var(--font-display)', fontWeight: '700', fontSize: '1.2rem', color: '#FFFFFF', lineHeight: 1.1 }}>AVARA</div>
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '0.62rem', color: '#C5A059', letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: '600' }}>International Co., Ltd.</div>
+                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '0.62rem', color: '#C5A059', letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: '600' }}>CO., LTD.</div>
                 </div>
               </div>
               <p style={{ lineHeight: 1.65, color: '#94A3B8', maxWidth: '65ch' }}>
-                A premier global trading, logistics, and multi-industry conglomerate connecting markets, streamlining supply chains, and elevating commerce worldwide.
+                A multi-industry conglomerate connecting investors with high-growth companies, managing logistics and medicine supply chains, facilitating Thailand healthcare access, and developing cross-border ventures worldwide.
               </p>
             </div>
             {/* Links */}
-            <div style={{ display: 'flex', gap: '4rem', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '3.5rem', flexWrap: 'wrap' }}>
               <div>
                 <div style={{ fontFamily: 'var(--font-display)', fontWeight: '600', color: '#C5A059', marginBottom: '1.2rem', fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Navigation</div>
                 {['Home', 'Services', 'Vision', 'Contact'].map((l) => (
@@ -410,22 +410,50 @@ export default function App() {
                 ))}
               </div>
               <div>
-                <div style={{ fontFamily: 'var(--font-display)', fontWeight: '600', color: '#C5A059', marginBottom: '1.2rem', fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Digital Ventures</div>
+                <div style={{ fontFamily: 'var(--font-display)', fontWeight: '600', color: '#0EA5E9', marginBottom: '1.2rem', fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Digital Ventures</div>
                 <a
                   href="/infinity-water"
                   onClick={(e) => { e.preventDefault(); navigateToInfinity(); }}
                   style={{ color: '#CBD5E1', textDecoration: 'none', fontSize: '0.875rem', fontWeight: '500', transition: 'color 0.2s' }}
-                  onMouseEnter={(e) => (e.target.style.color = '#C5A059')}
+                  onMouseEnter={(e) => (e.target.style.color = '#38BDF8')}
                   onMouseLeave={(e) => (e.target.style.color = '#CBD5E1')}
                 >
                   Infinity Water App
                 </a>
               </div>
+              {/* Head Office & Contact Details */}
+              <div style={{ maxWidth: '280px' }}>
+                <div style={{ fontFamily: 'var(--font-display)', fontWeight: '600', color: '#C5A059', marginBottom: '1.2rem', fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Head Office</div>
+                <div style={{ color: '#CBD5E1', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '0.85rem' }}>
+                  <span style={{ color: '#FFFFFF', fontWeight: '600', display: 'block' }}>AVARA CO., LTD.</span>
+                  No.11/2, Building P23, Sukhumvit Soi 23,<br />
+                  Klong Toei Nua Subdistrict, Watthana District,<br />
+                  Bangkok 10110, Thailand
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', fontSize: '0.85rem' }}>
+                  <a
+                    href="tel:+66943178943"
+                    style={{ color: '#CBD5E1', textDecoration: 'none', transition: 'color 0.2s' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#D4AF37')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#CBD5E1')}
+                  >
+                    +66-9-43178943
+                  </a>
+                  <a
+                    href="tel:+66946767344"
+                    style={{ color: '#CBD5E1', textDecoration: 'none', transition: 'color 0.2s' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#D4AF37')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#CBD5E1')}
+                  >
+                    +66-9-46767344
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
           {/* Bottom bar */}
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '1.8rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', fontSize: '0.82rem', color: '#94A3B8' }}>
-            <span>© {new Date().getFullYear()} AVARA International Co., Ltd. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} AVARA CO., LTD. All rights reserved.</span>
             <div style={{ display: 'flex', gap: '1.8rem' }}>
               <a href="#" onClick={(e) => e.preventDefault()} style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => (e.target.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.target.style.color = '#94A3B8')}>Privacy Policy</a>
               <a href="#" onClick={(e) => e.preventDefault()} style={{ color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => (e.target.style.color = '#FFFFFF')} onMouseLeave={(e) => (e.target.style.color = '#94A3B8')}>Terms of Service</a>

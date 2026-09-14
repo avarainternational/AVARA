@@ -3,21 +3,21 @@ import React, { useEffect, useRef, useState } from 'react';
 const pillars = [
   {
     num: '01',
-    title: 'Global Integration',
+    title: 'Capital & Enterprise Synergy',
     description:
-      'We aim to deeply integrate emerging and developed markets by building robust supply chains, state-of-the-art e-commerce channels, and comprehensive distribution networks that span continents.',
+      'We empower investors to deploy capital into high-growth sectors of their choice, creating strategic connections between visionary capital providers and ambitious, scalable companies.',
   },
   {
     num: '02',
-    title: 'Sustainable Growth',
+    title: 'Vital Healthcare & Sustainable Growth',
     description:
-      'Whether we are managing real estate, trading essential commodities, or providing business consultancy, our foundational goal is sustainable, long-term growth for our partners, clients, and communities.',
+      'From securing critical medicine and pharmaceutical supply chains to connecting individuals with world-class healthcare in Thailand, our operations deliver measurable, life-enhancing impact.',
   },
   {
     num: '03',
-    title: 'Operational Excellence',
+    title: 'Operational Excellence Across Borders',
     description:
-      'From customs clearance at international ports to delivering consumer goods via modern online platforms, we strive for unparalleled operational excellence in every transaction.',
+      'Whether managing Thailand real estate developments, multimodal logistics, retail channels, or cross-border corporate advisory, we maintain the highest standards of transparency and execution.',
   },
 ];
 
@@ -119,7 +119,7 @@ export default function VisionView() {
               marginBottom: '1.4rem',
             }}
           >
-            To become the world's most trusted partner in international trade, logistics, and multi-industry investment.
+            To become the premier bridge connecting capital with enterprise, and people with essential global resources.
           </h2>
 
           <p
@@ -128,7 +128,7 @@ export default function VisionView() {
               margin: '0 auto',
             }}
           >
-            We connect buyers and sellers, streamline complex supply chains, and open new markets — all while building lasting relationships rooted in trust, transparency, and shared success.
+            We connect investors with high-potential companies, secure vital medicine and cargo supply chains, and unlock cross-border opportunities in Thailand healthcare, real estate, and digital commerce — building lasting partnerships rooted in trust and execution.
           </p>
         </div>
       </section>

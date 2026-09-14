@@ -1,56 +1,73 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Globe2, Truck, Building2, ShoppingBag, Package, ChevronRight } from 'lucide-react';
-import globalTradingImg from '../../assets/services/global-trading.jpg';
+import { TrendingUp, Truck, HeartPulse, Building2, Briefcase, ShoppingBag, ChevronRight, Sparkles } from 'lucide-react';
+import investmentImg from '../../assets/services/investment.jpg';
 import logisticsImg from '../../assets/services/logistics.jpg';
+import healthcareImg from '../../assets/services/healthcare.jpg';
 import realEstateImg from '../../assets/services/real-estate.jpg';
-import ecommerceImg from '../../assets/services/ecommerce.jpg';
 import consultingImg from '../../assets/services/consulting.jpg';
+import ecommerceImg from '../../assets/services/ecommerce.jpg';
 
 const services = [
   {
-    icon: <Globe2 size={22} />,
-    color: '#C5A059',
-    image: globalTradingImg || '/assets/services/global-trading.jpg',
-    title: 'Global Trading & Distribution',
+    icon: <TrendingUp size={22} />,
+    color: '#D4AF37',
+    image: investmentImg,
+    isFlagship: true,
+    badgeText: 'Main Core Focus',
+    title: 'Investment & Capital Connectivity',
     description:
-      'Importing and exporting a diverse range of products including agricultural goods, consumer electronics, construction materials, and raw industrial materials across international borders.',
-    tags: ['Import/Export', 'Consumer Goods', 'Raw Materials'],
+      'Empowering investors to deploy capital into their preferred sectors while connecting high-growth companies with strategic funding. We facilitate high-impact cross-border ventures, syndicate capital, and structure long-term growth partnerships.',
+    tags: ['Investor Matchmaking', 'Direct Investment', 'Venture Growth', 'Cross-Border Capital'],
   },
   {
     icon: <Truck size={22} />,
     color: '#C5A059',
-    image: logisticsImg || '/assets/services/logistics.jpg',
-    title: 'End-to-End Logistics',
+    image: logisticsImg,
+    isFlagship: false,
+    title: 'End-to-End Logistics & Medicine Supply Chain',
     description:
-      'Comprehensive freight services by land, water, and air. We handle customs clearance, warehousing, and complex supply chain requirements on a global scale.',
-    tags: ['Freight', 'Customs', 'Warehousing'],
+      'Comprehensive multimodal freight by land, sea, and air with integrated customs clearance and bonded warehousing. We manage complex international supply chains with dedicated capabilities for pharmaceuticals and vital medical supplies.',
+    tags: ['Medicine Supply Chain', 'Freight & Customs', 'Cold Chain Warehousing'],
+  },
+  {
+    icon: <HeartPulse size={22} />,
+    color: '#C5A059',
+    image: healthcareImg,
+    isFlagship: false,
+    title: 'International Healthcare Facilitation',
+    description:
+      'A trusted concierge bridging patients and families with world-renowned, JCI-accredited hospitals and top specialist physicians in Thailand. We coordinate doctor consultations, hospital admissions, treatment plans, and medical travel logistics.',
+    tags: ['Top Thailand Hospitals', 'Medical Referral', 'Patient Concierge'],
   },
   {
     icon: <Building2 size={22} />,
     color: '#C5A059',
-    image: realEstateImg || '/assets/services/real-estate.jpg',
-    title: 'Real Estate & Properties',
+    image: realEstateImg,
+    isFlagship: false,
+    title: 'Real Estate in Thailand',
     description:
-      'Procuring, developing, and managing premium real estate properties. We handle everything from sales and mortgages to long-term property development and improvement.',
-    tags: ['Development', 'Sales', 'Management'],
+      'Procuring, developing, and managing prime residential, commercial, and hospitality properties across Thailand. We guide regional and international investors through property acquisition, title due diligence, and asset yield optimization.',
+    tags: ['Thailand Property', 'Development', 'Asset Management'],
+  },
+  {
+    icon: <Briefcase size={22} />,
+    color: '#C5A059',
+    image: consultingImg,
+    isFlagship: false,
+    title: 'Business Consulting & Market Entry',
+    description:
+      'Expert corporate advisory for cross-border expansion into Southeast Asian markets. We provide comprehensive guidance on company registration, regulatory compliance, trade documentation, and operational scaling.',
+    tags: ['Corporate Advisory', 'Market Entry', 'Trade Compliance'],
   },
   {
     icon: <ShoppingBag size={22} />,
     color: '#C5A059',
-    image: ecommerceImg || '/assets/services/ecommerce.jpg',
-    title: 'E-Commerce & Retail',
+    image: ecommerceImg,
+    isFlagship: false,
+    title: 'E-Commerce & Retail Distribution',
     description:
-      'Operating dynamic e-commerce platforms and retail channels. We distribute consumer goods domestically and internationally through major digital marketplaces.',
-    tags: ['Online Retail', 'Marketplaces', 'Distribution'],
-  },
-  {
-    icon: <Package size={22} />,
-    color: '#C5A059',
-    image: consultingImg || '/assets/services/consulting.jpg',
-    title: 'Business Consulting',
-    description:
-      'Providing expert consultancy in document preparation, marketing strategy, e-commerce operations, and international trade expansion for businesses of all sizes.',
-    tags: ['Strategy', 'Marketing', 'Trade Advisory'],
+      'Operating dynamic digital retail channels and regional distribution networks. We connect leading consumer brands and healthcare essentials with major international e-commerce platforms and retail outlets.',
+    tags: ['Digital Retail', 'Marketplace Channels', 'Distribution'],
   },
 ];
 
@@ -102,12 +119,12 @@ export default function ServicesView() {
           }}
         />
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          {/* Eyebrow: 11px mobile, 0.08em tracking */}
+          {/* Eyebrow */}
           <div className="eyebrow-badge" style={{ marginBottom: '1rem' }}>
             What We Do
           </div>
 
-          {/* Hero H1: fluid clamp */}
+          {/* Hero H1 */}
           <h1
             className="heading-hero"
             style={{
@@ -118,14 +135,14 @@ export default function ServicesView() {
             Our Core Capabilities
           </h1>
 
-          {/* Body: fluid 15px-16px, 65ch line length limit */}
+          {/* Body */}
           <p
             className="body-prose-dark"
             style={{
               margin: '0 auto',
             }}
           >
-            A comprehensive suite of institutional services engineered to bridge global markets and deliver unmatched operational value across industries.
+            A multi-industry conglomerate focused on connecting investors with high-potential companies, advancing medicine supply chains, facilitating premier Thai healthcare access, and developing cross-border assets.
           </p>
         </div>
       </section>
@@ -139,27 +156,36 @@ export default function ServicesView() {
                 key={idx}
                 ref={(el) => (refs.current[idx] = el)}
                 data-idx={idx}
-                className="service-card-item"
+                className={`service-card-item ${service.isFlagship ? 'flagship-service-card' : ''}`}
                 style={{
                   background: '#FFFFFF',
                   borderRadius: '20px',
                   overflow: 'hidden',
-                  border: '1px solid rgba(0,0,0,0.06)',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
+                  border: service.isFlagship
+                    ? '1.5px solid rgba(212, 175, 55, 0.45)'
+                    : '1px solid rgba(0,0,0,0.06)',
+                  boxShadow: service.isFlagship
+                    ? '0 10px 30px rgba(197, 160, 89, 0.12)'
+                    : '0 4px 20px rgba(0,0,0,0.04)',
                   transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
                   display: 'flex',
                   flexDirection: 'column',
+                  position: 'relative',
                   ...fadeStyle(idx, 0.08 * idx),
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-6px)';
-                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.08)';
+                  e.currentTarget.style.boxShadow = service.isFlagship
+                    ? '0 22px 48px rgba(197, 160, 89, 0.22)'
+                    : '0 20px 40px rgba(0,0,0,0.08)';
                   const img = e.currentTarget.querySelector('.service-card-img');
                   if (img) img.style.transform = 'scale(1.06)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.04)';
+                  e.currentTarget.style.boxShadow = service.isFlagship
+                    ? '0 10px 30px rgba(197, 160, 89, 0.12)'
+                    : '0 4px 20px rgba(0,0,0,0.04)';
                   const img = e.currentTarget.querySelector('.service-card-img');
                   if (img) img.style.transform = 'scale(1)';
                 }}
@@ -168,7 +194,7 @@ export default function ServicesView() {
                 <div
                   style={{
                     position: 'relative',
-                    height: '200px',
+                    height: '210px',
                     width: '100%',
                     overflow: 'hidden',
                     background: '#0B132B',
@@ -198,6 +224,32 @@ export default function ServicesView() {
                     }}
                   />
 
+                  {/* Flagship Badge if applicable */}
+                  {service.isFlagship && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '1rem',
+                        right: '1rem',
+                        background: 'linear-gradient(135deg, #D4AF37 0%, #F59E0B 100%)',
+                        color: '#070B14',
+                        padding: '0.32rem 0.75rem',
+                        borderRadius: '980px',
+                        fontSize: '0.72rem',
+                        fontWeight: '700',
+                        letterSpacing: '0.04em',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      <Sparkles size={12} />
+                      <span>{service.badgeText}</span>
+                    </div>
+                  )}
+
                   {/* Floating Category Icon Badge */}
                   <div
                     style={{
@@ -207,9 +259,11 @@ export default function ServicesView() {
                       width: '42px',
                       height: '42px',
                       borderRadius: '12px',
-                      background: 'rgba(11, 19, 43, 0.85)',
+                      background: 'rgba(11, 19, 43, 0.88)',
                       backdropFilter: 'blur(12px)',
-                      border: '1px solid rgba(197, 160, 89, 0.35)',
+                      border: service.isFlagship
+                        ? '1.5px solid #D4AF37'
+                        : '1px solid rgba(197, 160, 89, 0.35)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -221,7 +275,7 @@ export default function ServicesView() {
                   </div>
                 </div>
 
-                {/* Card Content Body: 20px internal padding on mobile, 32px on desktop */}
+                {/* Card Content Body */}
                 <div
                   className="service-card-body"
                   style={{
@@ -230,7 +284,7 @@ export default function ServicesView() {
                     flexGrow: 1,
                   }}
                 >
-                  {/* H3 Title: fluid clamp 18px-22px, weight 600 */}
+                  {/* H3 Title */}
                   <h3
                     className="heading-card"
                     style={{
@@ -241,7 +295,7 @@ export default function ServicesView() {
                     {service.title}
                   </h3>
 
-                  {/* Description: fluid 15px-16px, 1.6-1.65 line-height, #475569 */}
+                  {/* Description */}
                   <p
                     className="body-prose-light"
                     style={{
@@ -262,8 +316,12 @@ export default function ServicesView() {
                           fontSize: '0.75rem',
                           fontWeight: '500',
                           color: '#0F172A',
-                          background: 'rgba(197, 160, 89, 0.12)',
-                          border: '1px solid rgba(197, 160, 89, 0.3)',
+                          background: service.isFlagship
+                            ? 'rgba(212, 175, 55, 0.16)'
+                            : 'rgba(197, 160, 89, 0.12)',
+                          border: service.isFlagship
+                            ? '1px solid rgba(212, 175, 55, 0.45)'
+                            : '1px solid rgba(197, 160, 89, 0.3)',
                           padding: '0.35rem 0.75rem',
                           borderRadius: '980px',
                         }}
@@ -300,7 +358,7 @@ export default function ServicesView() {
               marginBottom: '1.1rem',
             }}
           >
-            Ready to scale your business globally?
+            Ready to deploy capital or scale your enterprise?
           </h2>
 
           <p
@@ -309,7 +367,7 @@ export default function ServicesView() {
               margin: '0 auto 2rem',
             }}
           >
-            Let our international trade and supply chain specialists help you navigate cross-border opportunities with confidence.
+            Whether you are an investor seeking vetted opportunities, a company seeking growth capital, or in need of specialized cross-border logistics and healthcare connectivity, our team is here to assist.
           </p>
 
           <button
@@ -329,12 +387,12 @@ export default function ServicesView() {
           gap: 1.5rem;
         }
         .service-card-body {
-          padding: 1.25rem; /* 20px mobile breathing room */
+          padding: 1.25rem;
         }
         @media (min-width: 640px) {
           .services-responsive-grid {
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            gap: 2rem;
           }
           .service-card-body {
             padding: 2rem 1.8rem 2.2rem;

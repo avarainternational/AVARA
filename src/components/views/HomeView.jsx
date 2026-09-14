@@ -123,7 +123,7 @@ export default function HomeView({ _navigateToInfinity, navigateToContact, navig
                 marginBottom: '1.3rem',
               }}
             >
-              Connecting Markets.
+              Connecting Capital & Markets.
               <br />
               <span
                 style={{
@@ -132,18 +132,18 @@ export default function HomeView({ _navigateToInfinity, navigateToContact, navig
                   WebkitTextFillColor: 'transparent',
                 }}
               >
-                Elevating Commerce.
+                Empowering Enterprise.
               </span>
             </h1>
 
-            {/* Subheadline: 15px mobile with 1.6 line height, 16px desktop with 1.65 line height */}
+            {/* Subheadline */}
             <p
               className="body-prose-dark"
               style={{
                 marginBottom: '2.2rem',
               }}
             >
-              A premier global trading, logistics, and venture partner, delivering end-to-end supply chain integration, distribution channels, and strategic cross-border solutions.
+              Connecting discerning investors with high-growth companies in their targeted sectors, backed by integrated operations in medicine supply chain logistics, Thailand healthcare access, prime real estate, and cross-border ventures.
             </p>
 
             {/* CTAs: Stack full width with 48px touch targets on mobile, horizontal on desktop */}
@@ -218,7 +218,7 @@ export default function HomeView({ _navigateToInfinity, navigateToContact, navig
               marginBottom: '1.4rem',
             }}
           >
-            Comprehensive Cross-Border Solutions for a Connected World
+            Connecting Investors, Enterprises, and Vital Global Resources
           </h2>
 
           {/* Body Text: 15px mobile, 16px desktop, 65ch line length limit */}
@@ -228,7 +228,7 @@ export default function HomeView({ _navigateToInfinity, navigateToContact, navig
               margin: '0 auto',
             }}
           >
-            From importing and exporting a vast portfolio of consumer and industrial goods to providing end-to-end logistics, e-commerce infrastructure, and real estate management — AVARA is dedicated to bridging gaps and creating value across diverse global markets.
+            From aligning investors with high-potential companies across strategic sectors, to managing critical medicine and logistics supply chains, facilitating patient access to top hospitals in Thailand, developing prime Thai real estate, and driving corporate advisory and retail distribution — AVARA creates lasting institutional value across borders.
           </p>
         </div>
       </section>

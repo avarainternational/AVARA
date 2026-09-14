@@ -45,6 +45,17 @@
   --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.04);
   --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.06);
   --shadow-gold: 0 4px 20px rgba(197, 160, 89, 0.3);
+
+  /* Infinity Water Blue Theme Tokens (Matches Infinity Logo Gradient) */
+  --infinity-blue: #0EA5E9;
+  --infinity-blue-hover: #38BDF8;
+  --infinity-blue-deep: #0284C7;
+  --infinity-blue-dark: #02426E;
+  --infinity-blue-glow: rgba(14, 165, 233, 0.35);
+  --infinity-blue-light: rgba(14, 165, 233, 0.12);
+  --infinity-blue-border: rgba(14, 165, 233, 0.35);
+  --infinity-gradient: linear-gradient(135deg, #0284C7 0%, #0EA5E9 50%, #38BDF8 100%);
+  --infinity-gradient-text: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 50%, #0284C7 100%);
 }
 
 * {
@@ -459,4 +470,62 @@ input, textarea, select {
   align-items: center;
   justify-content: center;
   padding: 1rem;
+}
+
+/* Infinity Water Blue Theme Utilities */
+.btn-infinity-blue {
+  background: linear-gradient(135deg, #0284C7 0%, #0EA5E9 50%, #38BDF8 100%);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85rem 1.8rem;
+  min-height: 48px;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.35);
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.btn-infinity-blue:hover {
+  background: linear-gradient(135deg, #0369A1 0%, #0284C7 50%, #0EA5E9 100%);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(14, 165, 233, 0.5);
+  filter: brightness(1.08);
+}
+
+.infinity-eyebrow-badge,
+.infinity-theme .eyebrow-badge {
+  background: rgba(14, 165, 233, 0.12) !important;
+  border-color: rgba(14, 165, 233, 0.35) !important;
+  color: #38BDF8 !important;
+}
+
+.infinity-theme .btn-gold {
+  background: linear-gradient(135deg, #0284C7 0%, #0EA5E9 50%, #38BDF8 100%) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.35) !important;
+}
+
+.infinity-theme .btn-gold:hover {
+  background: linear-gradient(135deg, #0369A1 0%, #0284C7 50%, #0EA5E9 100%) !important;
+  box-shadow: 0 8px 30px rgba(14, 165, 233, 0.5) !important;
+  color: #FFFFFF !important;
+}
+
+.infinity-theme .btn-outline {
+  border-color: rgba(14, 165, 233, 0.4) !important;
+}
+
+.infinity-theme .btn-outline:hover {
+  background: rgba(14, 165, 233, 0.15) !important;
+  border-color: #0EA5E9 !important;
 }

@@ -50,13 +50,13 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
             <img
               src={infinityLogo}
               alt="Infinity Water Logo"
-              style={{ width: '34px', height: '34px', borderRadius: '50%', border: '1px solid rgba(197, 160, 89, 0.4)' }}
+              style={{ width: '34px', height: '34px', borderRadius: '50%', border: '1px solid rgba(14, 165, 233, 0.4)' }}
             />
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <span style={{ fontFamily: 'var(--font-display)', fontWeight: '700', fontSize: '1.1rem', letterSpacing: '-0.01em', color: '#FFFFFF', lineHeight: 1.1 }}>
-                INFINITY <span style={{ color: '#C5A059' }}>WATER</span>
+                INFINITY <span style={{ color: '#0EA5E9' }}>WATER</span>
               </span>
-              <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.58rem', letterSpacing: '0.12em', color: '#C5A059', textTransform: 'uppercase', fontWeight: '600' }}>
+              <span style={{ fontFamily: 'var(--font-display)', fontSize: '0.58rem', letterSpacing: '0.12em', color: '#0EA5E9', textTransform: 'uppercase', fontWeight: '600' }}>
                 Digital Health Initiative
               </span>
             </div>
@@ -74,9 +74,9 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
           <button
             onClick={onNavigateToAvara}
             style={{
-              background: 'rgba(197, 160, 89, 0.12)',
-              border: '1px solid rgba(197, 160, 89, 0.35)',
-              color: '#C5A059',
+              background: 'rgba(14, 165, 233, 0.12)',
+              border: '1px solid rgba(14, 165, 233, 0.35)',
+              color: '#0EA5E9',
               padding: '0.55rem 1rem',
               minHeight: '44px',
               borderRadius: '980px',
@@ -90,14 +90,14 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
               transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(197, 160, 89, 0.22)';
-              e.currentTarget.style.borderColor = '#D4AF37';
+              e.currentTarget.style.background = 'rgba(14, 165, 233, 0.22)';
+              e.currentTarget.style.borderColor = '#38BDF8';
               e.currentTarget.style.color = '#FFFFFF';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(197, 160, 89, 0.12)';
-              e.currentTarget.style.borderColor = 'rgba(197, 160, 89, 0.35)';
-              e.currentTarget.style.color = '#C5A059';
+              e.currentTarget.style.background = 'rgba(14, 165, 233, 0.12)';
+              e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.35)';
+              e.currentTarget.style.color = '#0EA5E9';
             }}
           >
             <ArrowLeft size={14} /> Return to AVARA
@@ -137,14 +137,14 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.45rem',
-                  background: 'rgba(197, 160, 89, 0.12)',
-                  border: '1px solid rgba(197, 160, 89, 0.35)',
+                  background: 'rgba(14, 165, 233, 0.12)',
+                  border: '1px solid rgba(14, 165, 233, 0.35)',
                   padding: '0.4rem 0.85rem',
                   borderRadius: '100px',
                   marginBottom: '1.2rem',
                 }}
               >
-                <Heart size={13} color="#C5A059" /> MORE THAN HYDRATION — WE CARE FOR YOU
+                <Heart size={13} color="#0EA5E9" /> MORE THAN HYDRATION — WE CARE FOR YOU
               </div>
 
               {/* H1 (Hero Title): fluid clamp 32px-36px mobile, 52px desktop */}
@@ -157,7 +157,7 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
                 Nurturing Health. <br />
                 <span
                   style={{
-                    background: 'linear-gradient(135deg, #D4AF37 0%, #F0D78C 50%, #C5A059 100%)',
+                    background: 'linear-gradient(135deg, #38BDF8 0%, #0EA5E9 50%, #0284C7 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}
@@ -180,7 +180,7 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
               <div className="cta-button-group" style={{ marginBottom: '2.2rem' }}>
                 <a
                   href="#mobile-app"
-                  className="btn-gold btn-responsive"
+                  className="btn-infinity-blue btn-responsive"
                 >
                   <Smartphone size={16} /> Get the Free App
                 </a>
@@ -196,13 +196,13 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
               {/* Spec Badges: clean stacking on small mobile */}
               <div className="infinity-spec-badges">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  <Droplets size={16} color="#C5A059" /> Smart Hydration
+                  <Droplets size={16} color="#0EA5E9" /> Smart Hydration
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  <Users size={16} color="#C5A059" /> Family Care Nudges
+                  <Users size={16} color="#0EA5E9" /> Family Care Nudges
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  <BookOpen size={16} color="#C5A059" /> Daily Health News
+                  <BookOpen size={16} color="#0EA5E9" /> Daily Health News
                 </div>
               </div>
             </div>
@@ -220,7 +220,7 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
                     width: 'min(320px, 80vw)',
                     height: 'min(320px, 80vw)',
                     borderRadius: '50%',
-                    background: 'radial-gradient(circle, rgba(197, 160, 89, 0.22) 0%, rgba(13, 21, 39, 0.08) 60%, transparent 75%)',
+                    background: 'radial-gradient(circle, rgba(14, 165, 233, 0.22) 0%, rgba(13, 21, 39, 0.08) 60%, transparent 75%)',
                     filter: 'blur(35px)',
                     pointerEvents: 'none',
                   }}
@@ -246,7 +246,7 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
                           : 'translate(-50%, -50%) scale(0.92) translateY(16px)',
                         opacity: isActive ? 1 : 0,
                         filter: isActive
-                          ? 'drop-shadow(0 16px 35px rgba(197, 160, 89, 0.35)) drop-shadow(0 4px 12px rgba(0,0,0,0.6))'
+                          ? 'drop-shadow(0 16px 35px rgba(14, 165, 233, 0.35)) drop-shadow(0 4px 12px rgba(0,0,0,0.6))'
                           : 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2))',
                         transition: 'opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.65s ease',
                         pointerEvents: isActive ? 'auto' : 'none',
@@ -276,12 +276,12 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
                       width: activeImageIndex === idx ? '28px' : '8px',
                       height: '8px',
                       borderRadius: '4px',
-                      background: activeImageIndex === idx ? 'linear-gradient(90deg, #D4AF37, #C5A059)' : 'rgba(255, 255, 255, 0.2)',
+                      background: activeImageIndex === idx ? 'linear-gradient(90deg, #38BDF8, #0EA5E9)' : 'rgba(255, 255, 255, 0.2)',
                       border: 'none',
                       padding: 0,
                       cursor: 'pointer',
                       transition: 'all 0.35s ease',
-                      boxShadow: activeImageIndex === idx ? '0 0 10px rgba(197, 160, 89, 0.6)' : 'none',
+                      boxShadow: activeImageIndex === idx ? '0 0 10px rgba(14, 165, 233, 0.6)' : 'none',
                     }}
                   />
                 ))}
@@ -316,7 +316,7 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
               }}
             >
               We Don’t Just Deliver Water. <br />
-              <span style={{ color: '#C5A059' }}>We Care for Your Well-Being.</span>
+              <span style={{ color: '#0EA5E9' }}>We Care for Your Well-Being.</span>
             </h2>
 
             {/* Body Description */}
@@ -333,15 +333,15 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
                   width: '46px',
                   height: '46px',
                   borderRadius: '12px',
-                  background: 'rgba(197, 160, 89, 0.12)',
-                  border: '1px solid rgba(197, 160, 89, 0.3)',
+                  background: 'rgba(14, 165, 233, 0.12)',
+                  border: '1px solid rgba(14, 165, 233, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginBottom: '1.2rem',
                 }}
               >
-                <Heart size={22} color="#C5A059" />
+                <Heart size={22} color="#0EA5E9" />
               </div>
               <h3
                 className="heading-card"
@@ -363,15 +363,15 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
                   width: '46px',
                   height: '46px',
                   borderRadius: '12px',
-                  background: 'rgba(197, 160, 89, 0.12)',
-                  border: '1px solid rgba(197, 160, 89, 0.3)',
+                  background: 'rgba(14, 165, 233, 0.12)',
+                  border: '1px solid rgba(14, 165, 233, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginBottom: '1.2rem',
                 }}
               >
-                <Users size={22} color="#C5A059" />
+                <Users size={22} color="#0EA5E9" />
               </div>
               <h3
                 className="heading-card"
@@ -393,15 +393,15 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
                   width: '46px',
                   height: '46px',
                   borderRadius: '12px',
-                  background: 'rgba(197, 160, 89, 0.12)',
-                  border: '1px solid rgba(197, 160, 89, 0.3)',
+                  background: 'rgba(14, 165, 233, 0.12)',
+                  border: '1px solid rgba(14, 165, 233, 0.3)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginBottom: '1.2rem',
                 }}
               >
-                <BookOpen size={22} color="#C5A059" />
+                <BookOpen size={22} color="#0EA5E9" />
               </div>
               <h3
                 className="heading-card"
@@ -449,7 +449,7 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
             {/* Feature 1 */}
             <div className="responsive-card" style={{ background: 'rgba(255, 255, 255, 0.025)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
               <div style={featureIconBoxStyle}>
-                <Bell size={22} color="#C5A059" />
+                <Bell size={22} color="#0EA5E9" />
               </div>
               <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: '600', color: '#FFFFFF', marginBottom: '0.5rem', lineHeight: 1.35 }}>
                 Smart & Mindful Reminders
@@ -462,7 +462,7 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
             {/* Feature 2 */}
             <div className="responsive-card" style={{ background: 'rgba(255, 255, 255, 0.025)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
               <div style={featureIconBoxStyle}>
-                <Heart size={22} color="#C5A059" />
+                <Heart size={22} color="#0EA5E9" />
               </div>
               <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: '600', color: '#FFFFFF', marginBottom: '0.5rem', lineHeight: 1.35 }}>
                 Family & Relations Care
@@ -475,7 +475,7 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
             {/* Feature 3 */}
             <div className="responsive-card" style={{ background: 'rgba(255, 255, 255, 0.025)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
               <div style={featureIconBoxStyle}>
-                <Activity size={22} color="#C5A059" />
+                <Activity size={22} color="#0EA5E9" />
               </div>
               <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: '600', color: '#FFFFFF', marginBottom: '0.5rem', lineHeight: 1.35 }}>
                 Daily Health Briefs
@@ -488,7 +488,7 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
             {/* Feature 4 */}
             <div className="responsive-card" style={{ background: 'rgba(255, 255, 255, 0.025)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
               <div style={featureIconBoxStyle}>
-                <Award size={22} color="#C5A059" />
+                <Award size={22} color="#0EA5E9" />
               </div>
               <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: '600', color: '#FFFFFF', marginBottom: '0.5rem', lineHeight: 1.35 }}>
                 Mindful Habit Streaks
@@ -511,150 +511,89 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
         }}
       >
         <div className="container">
-          <div className="infinity-news-layout">
-            <div>
-              {/* Eyebrow */}
-              <div className="eyebrow-badge" style={{ marginBottom: '0.8rem' }}>
-                Verified Health & Medical Updates
-              </div>
-
-              {/* H2 */}
-              <h2
-                className="heading-section"
-                style={{
-                  marginBottom: '1.1rem',
-                }}
-              >
-                Stay Informed. <br />
-                <span style={{ color: '#C5A059' }}>Stay Empowered.</span>
-              </h2>
-
-              <p className="body-prose-dark" style={{ marginBottom: '1.8rem' }}>
-                Infinity Water features a dedicated newsfeed curated by certified wellness researchers. Receive science-backed tips on hydration, energy maintenance, and everyday nutrition.
-              </p>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
-                {[
-                  {
-                    tag: 'Hydration Science',
-                    title: 'How 500ml of Morning Water Boosts Cognitive Function by 14%',
-                    time: 'Today • 2 min read',
-                  },
-                  {
-                    tag: 'Family Wellness',
-                    title: 'Hydration Guidelines for Aging Parents: Signs of Dehydration to Watch',
-                    time: 'Yesterday • 3 min read',
-                  },
-                  {
-                    tag: 'Lifestyle & Energy',
-                    title: 'Electrolytes vs. Pure Water: When and How to Balance for Peak Vitality',
-                    time: '3 days ago • 2 min read',
-                  },
-                ].map((news, idx) => (
-                  <div
-                    key={idx}
-                    style={{
-                      background: 'rgba(255, 255, 255, 0.03)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
-                      borderRadius: '14px',
-                      padding: '1rem 1.2rem',
-                    }}
-                  >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
-                      <span style={{ fontFamily: 'var(--font-display)', color: '#C5A059', fontSize: '0.72rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                        {news.tag}
-                      </span>
-                      <span style={{ fontFamily: 'var(--font-sans)', color: '#94A3B8', fontSize: '0.75rem' }}>{news.time}</span>
-                    </div>
-                    <div style={{ fontFamily: 'var(--font-display)', color: '#F8FAFC', fontSize: '0.92rem', fontWeight: '600', lineHeight: 1.4 }}>
-                      {news.title}
-                    </div>
-                  </div>
-                ))}
-              </div>
+          <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 3rem auto' }}>
+            {/* Eyebrow */}
+            <div className="eyebrow-badge" style={{ marginBottom: '0.8rem' }}>
+              Verified Health & Medical Updates
             </div>
 
-            {/* Right: Family Care Circle Showcase Graphic */}
-            <div
+            {/* H2 */}
+            <h2
+              className="heading-section"
               style={{
-                background: 'linear-gradient(135deg, rgba(197, 160, 89, 0.1) 0%, rgba(13, 21, 39, 0.04) 100%)',
-                border: '1px solid rgba(197, 160, 89, 0.25)',
-                borderRadius: '20px',
-                padding: '1.5rem',
-                textAlign: 'center',
-                boxSizing: 'border-box',
+                marginBottom: '1.1rem',
               }}
             >
+              Stay Informed. <br />
+              <span style={{ color: '#0EA5E9' }}>Stay Empowered.</span>
+            </h2>
+
+            <p className="body-prose-dark" style={{ margin: '0 auto' }}>
+              Infinity Water features a dedicated newsfeed curated by certified wellness researchers. Receive science-backed tips on hydration, energy maintenance, and everyday nutrition.
+            </p>
+          </div>
+
+          <div className="infinity-news-grid">
+            {[
+              {
+                tag: 'Hydration Science',
+                title: 'How 500ml of Morning Water Boosts Cognitive Function by 14%',
+                desc: 'Clinical studies demonstrate that drinking water immediately upon waking rehydrates brain cells, accelerates metabolic recovery, and sharpens morning alertness.',
+                time: 'Today • 2 min read',
+              },
+              {
+                tag: 'Family Wellness',
+                title: 'Hydration Guidelines for Aging Parents: Signs of Dehydration to Watch',
+                desc: 'Recognizing subtle early indicators of dehydration in seniors, maintaining optimal electrolyte levels, and creating effortless daily drinking routines.',
+                time: 'Yesterday • 3 min read',
+              },
+              {
+                tag: 'Lifestyle & Energy',
+                title: 'Electrolytes vs. Pure Water: When and How to Balance for Peak Vitality',
+                desc: 'Understanding sodium, potassium, and magnesium ratios during exercise and hot climates to prevent cellular fatigue and sustain steady physical stamina.',
+                time: '3 days ago • 2 min read',
+              },
+            ].map((news, idx) => (
               <div
+                key={idx}
+                className="responsive-card"
                 style={{
-                  background: '#070B14',
-                  borderRadius: '16px',
-                  border: '1px solid rgba(197, 160, 89, 0.35)',
-                  padding: '1.4rem 1.2rem',
-                  maxWidth: '340px',
-                  margin: '0 auto',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.6)',
-                  boxSizing: 'border-box',
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                  borderRadius: '18px',
+                  padding: '1.6rem 1.4rem',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.4)';
+                  e.currentTarget.style.boxShadow = '0 16px 32px rgba(14, 165, 233, 0.12)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                  e.currentTarget.style.boxShadow = 'none';
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#F8FAFC', fontWeight: '600', fontSize: '0.88rem', fontFamily: 'var(--font-display)' }}>
-                    <Heart size={16} color="#C5A059" /> Family Care Circle
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.8rem' }}>
+                    <span style={{ fontFamily: 'var(--font-display)', color: '#0EA5E9', fontSize: '0.72rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                      {news.tag}
+                    </span>
+                    <span style={{ fontFamily: 'var(--font-sans)', color: '#94A3B8', fontSize: '0.75rem' }}>{news.time}</span>
                   </div>
-                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.7rem', color: '#C5A059', background: 'rgba(197, 160, 89, 0.15)', padding: '0.2rem 0.55rem', borderRadius: '980px', fontWeight: '600', border: '1px solid rgba(197, 160, 89, 0.3)' }}>
-                    3 Members
-                  </span>
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '1rem' }}>
-                  {/* Family member 1 */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#0F172A', padding: '0.7rem 0.85rem', borderRadius: '12px' }}>
-                    <div style={{ textAlign: 'left' }}>
-                      <div style={{ color: '#FFFFFF', fontSize: '0.82rem', fontWeight: '600', fontFamily: 'var(--font-display)' }}>Mom (Sarah)</div>
-                      <div style={{ color: '#C5A059', fontSize: '0.7rem', fontFamily: 'var(--font-sans)' }}>1,900 / 2,000 ml (95%)</div>
-                    </div>
-                    <span style={{ fontSize: '0.7rem', color: '#10B981', fontWeight: '700', fontFamily: 'var(--font-sans)' }}>Goal Met 🎉</span>
-                  </div>
-
-                  {/* Family member 2 */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#0F172A', padding: '0.7rem 0.85rem', borderRadius: '12px' }}>
-                    <div style={{ textAlign: 'left' }}>
-                      <div style={{ color: '#FFFFFF', fontSize: '0.82rem', fontWeight: '600', fontFamily: 'var(--font-display)' }}>Dad (Robert)</div>
-                      <div style={{ color: '#94A3B8', fontSize: '0.7rem', fontFamily: 'var(--font-sans)' }}>1,100 / 2,200 ml (50%)</div>
-                    </div>
-                    <button
-                      style={{
-                        background: '#C5A059',
-                        border: 'none',
-                        color: '#0B132B',
-                        fontSize: '0.7rem',
-                        fontFamily: 'var(--font-sans)',
-                        fontWeight: '600',
-                        padding: '0.35rem 0.7rem',
-                        borderRadius: '6px',
-                        cursor: 'pointer',
-                        minHeight: '32px',
-                      }}
-                    >
-                      Send Nudge ❤️
-                    </button>
-                  </div>
-
-                  {/* Family member 3 */}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#0F172A', padding: '0.7rem 0.85rem', borderRadius: '12px' }}>
-                    <div style={{ textAlign: 'left' }}>
-                      <div style={{ color: '#FFFFFF', fontSize: '0.82rem', fontWeight: '600', fontFamily: 'var(--font-display)' }}>You</div>
-                      <div style={{ color: '#C5A059', fontSize: '0.7rem', fontFamily: 'var(--font-sans)' }}>1,850 / 2,400 ml (77%)</div>
-                    </div>
-                    <span style={{ fontSize: '0.7rem', color: '#C5A059', fontWeight: '600', fontFamily: 'var(--font-sans)' }}>Active</span>
-                  </div>
-                </div>
-
-                <div style={{ fontSize: '0.72rem', color: '#94A3B8', lineHeight: 1.4, fontFamily: 'var(--font-sans)' }}>
-                  "Staying healthy together creates lasting habits."
+                  <h3 style={{ fontFamily: 'var(--font-display)', color: '#F8FAFC', fontSize: '1.05rem', fontWeight: '600', lineHeight: 1.4, marginBottom: '0.7rem' }}>
+                    {news.title}
+                  </h3>
+                  <p className="body-prose-dark" style={{ fontSize: '0.88rem', lineHeight: 1.55 }}>
+                    {news.desc}
+                  </p>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -684,7 +623,7 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
               }}
             >
               Start Your Journey to <br />
-              <span style={{ color: '#C5A059' }}>Better Hydration & Genuine Care</span>
+              <span style={{ color: '#0EA5E9' }}>Better Hydration & Genuine Care</span>
             </h2>
 
             {/* Body Description */}
@@ -710,7 +649,7 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
                   justifyContent: 'center',
                   gap: '0.85rem',
                   background: '#0B132B',
-                  border: '1px solid rgba(197, 160, 89, 0.35)',
+                  border: '1px solid rgba(14, 165, 233, 0.35)',
                   borderRadius: '14px',
                   padding: '0.75rem 1.6rem',
                   minHeight: '48px',
@@ -722,12 +661,12 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.borderColor = '#C5A059';
-                  e.currentTarget.style.boxShadow = '0 12px 30px rgba(197, 160, 89, 0.25)';
+                  e.currentTarget.style.borderColor = '#0EA5E9';
+                  e.currentTarget.style.boxShadow = '0 12px 30px rgba(14, 165, 233, 0.25)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.borderColor = 'rgba(197, 160, 89, 0.35)';
+                  e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.35)';
                   e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.4)';
                 }}
               >
@@ -751,7 +690,7 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
                   justifyContent: 'center',
                   gap: '0.85rem',
                   background: '#0B132B',
-                  border: '1px solid rgba(197, 160, 89, 0.35)',
+                  border: '1px solid rgba(14, 165, 233, 0.35)',
                   borderRadius: '14px',
                   padding: '0.75rem 1.6rem',
                   minHeight: '48px',
@@ -763,12 +702,12 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.borderColor = '#C5A059';
-                  e.currentTarget.style.boxShadow = '0 12px 30px rgba(197, 160, 89, 0.25)';
+                  e.currentTarget.style.borderColor = '#0EA5E9';
+                  e.currentTarget.style.boxShadow = '0 12px 30px rgba(14, 165, 233, 0.25)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.borderColor = 'rgba(197, 160, 89, 0.35)';
+                  e.currentTarget.style.borderColor = 'rgba(14, 165, 233, 0.35)';
                   e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.4)';
                 }}
               >
@@ -793,7 +732,7 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <img src={infinityLogo} alt="Logo" style={{ width: '22px', height: '22px', borderRadius: '50%' }} />
-            <span>© {new Date().getFullYear()} Infinity Water Technologies. A Digital Health Venture by AVARA International Co., Ltd.</span>
+            <span>© {new Date().getFullYear()} Infinity Water. A Digital Health Venture by AVARA CO., LTD & BestConnect CO., LTD.</span>
           </div>
 
           <button
@@ -801,7 +740,7 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
             style={{
               background: 'none',
               border: 'none',
-              color: '#C5A059',
+              color: '#0EA5E9',
               cursor: 'pointer',
               fontWeight: '600',
               fontSize: '0.85rem',
@@ -812,8 +751,8 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
               minHeight: '44px',
               transition: 'color 0.2s ease',
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#D4AF37')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#C5A059')}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#38BDF8')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#0EA5E9')}
           >
             <img src={avaraLogo} alt="AVARA" style={{ height: '18px', width: 'auto' }} />
             Return to AVARA International →
@@ -855,11 +794,10 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
           grid-template-columns: 1fr;
           gap: 1.5rem;
         }
-        .infinity-news-layout {
+        .infinity-news-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 2.5rem;
-          align-items: center;
+          gap: 1.5rem;
         }
         @media (min-width: 640px) {
           .infinity-features-grid {
@@ -869,6 +807,10 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
           .infinity-cards-grid {
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
+          }
+          .infinity-news-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
           }
         }
         @media (min-width: 768px) {
@@ -881,10 +823,6 @@ export default function InfinityWaterPage({ onNavigateToAvara }) {
             grid-template-columns: 1.15fr 0.85fr;
             gap: 3.5rem;
           }
-          .infinity-news-layout {
-            grid-template-columns: 1fr 1fr;
-            gap: 3.5rem;
-          }
         }
       `}</style>
     </div>
@@ -895,8 +833,8 @@ const featureIconBoxStyle = {
   width: '44px',
   height: '44px',
   borderRadius: '12px',
-  background: 'rgba(197, 160, 89, 0.12)',
-  border: '1px solid rgba(197, 160, 89, 0.3)',
+  background: 'rgba(14, 165, 233, 0.12)',
+  border: '1px solid rgba(14, 165, 233, 0.3)',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
