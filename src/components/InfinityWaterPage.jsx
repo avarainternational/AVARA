@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Droplets, Smartphone, Heart, Users, BookOpen, Bell, ArrowLeft, Activity, Award } from 'lucide-react';
-import infinityLogoImport from '../assets/infinity/logo.png';
-import infinityBottleImport from '../assets/infinity/bottle.png';
-import infinityWaterImport from '../assets/infinity/infinity.png';
-import infinityBothImport from '../assets/infinity/both.png';
-import avaraLogoImport from '../assets/avara/logo.png';
+import infinityLogoImport from '../assets/infinity/logo.webp';
+import infinityBottleImport from '../assets/infinity/bottle.webp';
+import infinityWaterImport from '../assets/infinity/infinity.webp';
+import infinityBothImport from '../assets/infinity/both.webp';
+import avaraLogoImport from '../assets/avara/logo.webp';
 
-const infinityLogo = infinityLogoImport || '/infinity/logo.png';
-const infinityBottle = infinityBottleImport || '/infinity/bottle.png';
-const infinityWater = infinityWaterImport || '/infinity/infinity.png';
-const infinityBoth = infinityBothImport || '/infinity/both.png';
-const avaraLogo = avaraLogoImport || '/logo/logo.png';
+const infinityLogo = infinityLogoImport || '/infinity/logo.webp';
+const infinityBottle = infinityBottleImport || '/infinity/bottle.webp';
+const infinityWater = infinityWaterImport || '/infinity/infinity.webp';
+const infinityBoth = infinityBothImport || '/infinity/both.webp';
+const avaraLogo = avaraLogoImport || '/logo/logo.webp';
 
 const showcaseImages = [
   { src: infinityBottle, alt: 'Infinity Water Premium Bottle' },

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import infinityLogoImport from '../assets/infinity/logo.png';
-import avaraLogoImport from '../assets/avara/logo.png';
+import infinityLogoImport from '../assets/infinity/logo.webp';
+import avaraLogoImport from '../assets/avara/logo.webp';
 
-const infinityLogo = infinityLogoImport || '/infinity/logo.png';
-const avaraLogo = avaraLogoImport || '/logo/logo.png';
+const infinityLogo = infinityLogoImport || '/infinity/logo.webp';
+const avaraLogo = avaraLogoImport || '/logo/logo.webp';
 
 export default function Header({ navigateToInfinity, navigateToAvara }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Smartphone, Droplets, ShieldCheck, Zap, Sparkles } from 'lucide-react';
-import infinityBottleImport from '../assets/infinity/bottle.png';
-import infinityWaterImport from '../assets/infinity/infinity.png';
-import infinityBothImport from '../assets/infinity/both.png';
+import infinityBottleImport from '../assets/infinity/bottle.webp';
+import infinityWaterImport from '../assets/infinity/infinity.webp';
+import infinityBothImport from '../assets/infinity/both.webp';
 
-const infinityBottle = infinityBottleImport || '/infinity/bottle.png';
-const infinityWater = infinityWaterImport || '/infinity/infinity.png';
-const infinityBoth = infinityBothImport || '/infinity/both.png';
+const infinityBottle = infinityBottleImport || '/infinity/bottle.webp';
+const infinityWater = infinityWaterImport || '/infinity/infinity.webp';
+const infinityBoth = infinityBothImport || '/infinity/both.webp';
 
 const showcaseImages = [
   { src: infinityBottle, alt: 'Infinity Water Premium Bottle' },

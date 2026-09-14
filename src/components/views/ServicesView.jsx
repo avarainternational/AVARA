@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { TrendingUp, Truck, HeartPulse, Building2, Briefcase, ShoppingBag, ChevronRight, Sparkles } from 'lucide-react';
-import investmentImg from '../../assets/services/investment.jpg';
-import logisticsImg from '../../assets/services/logistics.jpg';
-import healthcareImg from '../../assets/services/healthcare.jpg';
-import realEstateImg from '../../assets/services/real-estate.jpg';
-import consultingImg from '../../assets/services/consulting.jpg';
-import ecommerceImg from '../../assets/services/ecommerce.jpg';
+import investmentImg from '../../assets/services/investment.webp';
+import logisticsImg from '../../assets/services/logistics.webp';
+import healthcareImg from '../../assets/services/healthcare.webp';
+import realEstateImg from '../../assets/services/real-estate.webp';
+import consultingImg from '../../assets/services/consulting.webp';
+import ecommerceImg from '../../assets/services/ecommerce.webp';
 
 const services = [
   {

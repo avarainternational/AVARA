@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import InfinityWaterPage from './components/InfinityWaterPage';
 import FeaturedDigitalInitiative from './components/FeaturedDigitalInitiative';
-import infinityLogoImport from './assets/infinity/logo.png';
-import avaraLogoImport from './assets/avara/logo.png';
+import infinityLogoImport from './assets/infinity/logo.webp';
+import avaraLogoImport from './assets/avara/logo.webp';
 
 import HomeView from './components/views/HomeView';
 import ServicesView from './components/views/ServicesView';
 import VisionView from './components/views/VisionView';
 import ContactView from './components/views/ContactView';
 
-const infinityLogo = infinityLogoImport || '/infinity/logo.png';
-const avaraLogo = avaraLogoImport || '/logo/logo.png';
+const infinityLogo = infinityLogoImport || '/infinity/logo.webp';
+const avaraLogo = avaraLogoImport || '/logo/logo.webp';
 
 const isInfinityRoute = (path = '', hash = '') => {
   const p = (path || '').toLowerCase();
