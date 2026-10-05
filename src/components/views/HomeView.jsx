@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ChevronRight, ArrowDown } from 'lucide-react';
 import SpinningEarth3D from '../SpinningEarth3D';
+import mainHeroBgImport from '../../assets/hero/mainherobackground.webp';
+
+const mainHeroBg = mainHeroBgImport || '/assets/hero/mainherobackground.webp';
 
 export default function HomeView({ _navigateToInfinity, navigateToContact, navigateToServices }) {
   const [visible, setVisible] = useState({});
@@ -33,7 +36,7 @@ export default function HomeView({ _navigateToInfinity, navigateToContact, navig
       <section
         style={{
           minHeight: '100vh',
-          background: 'linear-gradient(165deg, #070B14 0%, #0D1527 45%, #131F3B 100%)',
+          backgroundColor: '#070B14',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -44,35 +47,20 @@ export default function HomeView({ _navigateToInfinity, navigateToContact, navig
           paddingBottom: '3.5rem',
         }}
       >
-        {/* ═══ LAYER 1: Geometric Grid Background ═══ */}
+        {/* ═══ Hero Background Image (Full Brightness) ═══ */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
-            zIndex: 0,
-            backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-            pointerEvents: 'none',
-          }}
-        />
-        {/* Radial ambient glow behind globe */}
-        <div
-          style={{
-            position: 'absolute',
-            width: '700px',
-            height: '700px',
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, rgba(11, 19, 43, 0.05) 50%, transparent 70%)',
-            top: '50%',
-            right: '-5%',
-            transform: 'translateY(-50%)',
-            pointerEvents: 'none',
+            backgroundImage: `url(${mainHeroBg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
             zIndex: 0,
           }}
         />
 
-        {/* ═══ LAYER 2: 3D Spinning Globe (Right Side) ═══ */}
+        {/* ═══ 3D Spinning Globe (Right Side) ═══ */}
         <div
           className="hero-spinning-earth-bg"
           style={{
@@ -84,7 +72,7 @@ export default function HomeView({ _navigateToInfinity, navigateToContact, navig
             height: 'clamp(620px, 55vw, 920px)',
             zIndex: 1,
             pointerEvents: 'none',
-            opacity: 0.9,
+            opacity: 0.95,
           }}
         >
           <SpinningEarth3D />
@@ -103,44 +91,52 @@ export default function HomeView({ _navigateToInfinity, navigateToContact, navig
           }}
         >
           <div className="hero-text-block" style={{ textAlign: 'left', maxWidth: '680px', width: '100%' }}>
-            {/* Eyebrow: 11px on mobile with 0.08em tracking to eliminate line wraps */}
+            {/* Eyebrow: Clean typography text without tag/pill effects */}
             <div
               className="eyebrow-badge"
               style={{
                 marginBottom: '1rem',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.45rem',
+                color: '#F0D78C',
+                letterSpacing: '0.14em',
+                fontWeight: '600',
               }}
             >
-              <span>Global Enterprise Conglomerate</span>
+              Global Enterprise Conglomerate
             </div>
 
-            {/* H1 Hero Title: 32px-36px mobile (tight 1.18 line-height), 52px desktop */}
+            {/* H1 Hero Title: Sharp white and vibrant gold gradient (no filter/blur bugs) */}
             <h1
               className="heading-hero"
               style={{
-                marginBottom: '1.3rem',
+                marginBottom: '1.4rem',
+                color: '#FFFFFF',
               }}
             >
               Connecting Capital & Markets.
               <br />
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #D4AF37 0%, #F0D78C 50%, #C5A059 100%)',
+                  background: 'linear-gradient(135deg, #FFF0B3 0%, #F5D061 40%, #E5A93C 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
+                  display: 'inline-block',
                 }}
               >
                 Empowering Enterprise.
               </span>
             </h1>
 
-            {/* Subheadline */}
+            {/* Subheadline: Intense high-clarity pure slate-white with text shadow for crisp legibility */}
             <p
               className="body-prose-dark"
               style={{
-                marginBottom: '2.2rem',
+                marginBottom: '2.4rem',
+                color: '#F8FAFC',
+                fontSize: 'clamp(1.02rem, 1.25vw, 1.15rem)',
+                lineHeight: 1.72,
+                fontWeight: '400',
+                maxWidth: '65ch',
+                textShadow: '0 2px 14px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.9)',
               }}
             >
               Connecting discerning investors with high-growth companies in their targeted sectors, backed by integrated operations in medicine supply chain logistics, Thailand healthcare access, prime real estate, and cross-border ventures.
@@ -151,6 +147,10 @@ export default function HomeView({ _navigateToInfinity, navigateToContact, navig
               <button
                 onClick={navigateToServices}
                 className="btn-gold btn-responsive"
+                style={{
+                  boxShadow: '0 4px 25px rgba(212, 175, 55, 0.45)',
+                  fontWeight: '600',
+                }}
               >
                 Explore Our Services
               </button>
@@ -158,6 +158,13 @@ export default function HomeView({ _navigateToInfinity, navigateToContact, navig
               <button
                 onClick={navigateToContact}
                 className="btn-outline btn-responsive"
+                style={{
+                  color: '#FFFFFF',
+                  borderColor: 'rgba(255, 255, 255, 0.45)',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(12px)',
+                  textShadow: '0 1px 4px rgba(0, 0, 0, 0.8)',
+                }}
               >
                 Contact Us <ChevronRight size={16} />
               </button>
@@ -165,7 +172,7 @@ export default function HomeView({ _navigateToInfinity, navigateToContact, navig
           </div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator: Intense crisp white with shadow */}
         <div
           style={{
             position: 'absolute',
@@ -176,7 +183,8 @@ export default function HomeView({ _navigateToInfinity, navigateToContact, navig
             flexDirection: 'column',
             alignItems: 'center',
             gap: '0.4rem',
-            color: 'rgba(255,255,255,0.4)',
+            color: '#F8FAFC',
+            textShadow: '0 2px 8px rgba(0, 0, 0, 0.9)',
             fontSize: '0.72rem',
             fontFamily: 'var(--font-display)',
             fontWeight: '600',
