@@ -430,7 +430,15 @@ export default function App() {
                   Klong Toei Nua Subdistrict, Watthana District,<br />
                   Bangkok 10110, Thailand
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', fontSize: '0.85rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.85rem' }}>
+                  <a
+                    href="mailto:contact@avarainternational.com"
+                    style={{ color: '#F1F5F9', textDecoration: 'none', transition: 'color 0.2s', fontWeight: '500' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#D4AF37')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#F1F5F9')}
+                  >
+                    contact@avarainternational.com
+                  </a>
                   <a
                     href="tel:+66943178943"
                     style={{ color: '#CBD5E1', textDecoration: 'none', transition: 'color 0.2s' }}

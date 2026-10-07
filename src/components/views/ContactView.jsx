@@ -1,9 +1,80 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Mail, Phone, MapPin, ChevronRight } from 'lucide-react';
+import { Mail, Phone, MapPin, ChevronRight, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 
 export default function ContactView() {
   const [visible, setVisible] = useState({});
   const refs = useRef([]);
+
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    inquiryType: 'Investment & Capital Deployment (Connecting Investors & Companies)',
+    message: '',
+  });
+  const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.email || !formData.firstName || !formData.message) return;
+
+    setStatus('submitting');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/contact@avarainternational.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          'Full Name': `${formData.firstName} ${formData.lastName}`.trim(),
+          'First Name': formData.firstName,
+          'Last Name': formData.lastName,
+          'Email': formData.email,
+          'Inquiry Type': formData.inquiryType,
+          'Message': formData.message,
+          _subject: `New Website Inquiry: ${formData.inquiryType} (${formData.firstName} ${formData.lastName})`,
+          _replyto: formData.email,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok && (data.success === 'true' || data.success === true || response.status === 200)) {
+        setStatus('success');
+      } else {
+        throw new Error(data.message || 'Transmission could not be confirmed.');
+      }
+    } catch (err) {
+      console.error('Contact form submission error:', err);
+      setStatus('error');
+      setErrorMessage(
+        'Unable to complete automatic web delivery due to network restrictions. You can retry or click below to launch your email client directly.'
+      );
+    }
+  };
+
+  const handleReset = () => {
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      inquiryType: 'Investment & Capital Deployment (Connecting Investors & Companies)',
+      message: '',
+    });
+    setStatus('idle');
+    setErrorMessage('');
+  };
+
+  const mailtoFallbackUrl = `mailto:contact@avarainternational.com?subject=${encodeURIComponent(
+    `Inquiry: ${formData.inquiryType} - ${formData.firstName} ${formData.lastName}`
+  )}&body=${encodeURIComponent(
+    `Sender: ${formData.firstName} ${formData.lastName}\nEmail: ${formData.email}\nInquiry: ${formData.inquiryType}\n\nMessage:\n${formData.message}`
+  )}`;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -179,28 +250,17 @@ export default function ContactView() {
                   content: (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
                       <a
-                        href="mailto:contact@avara-global.com"
+                        href="mailto:contact@avarainternational.com"
                         style={{
                           color: '#0F172A',
                           textDecoration: 'none',
+                          fontWeight: '500',
                           transition: 'color 0.2s',
                         }}
                         onMouseEnter={(e) => (e.currentTarget.style.color = '#C5A059')}
                         onMouseLeave={(e) => (e.currentTarget.style.color = '#0F172A')}
                       >
-                        contact@avara-global.com
-                      </a>
-                      <a
-                        href="mailto:partnerships@avara-global.com"
-                        style={{
-                          color: '#0F172A',
-                          textDecoration: 'none',
-                          transition: 'color 0.2s',
-                        }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = '#C5A059')}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = '#0F172A')}
-                      >
-                        partnerships@avara-global.com
+                        contact@avarainternational.com
                       </a>
                     </div>
                   ),
@@ -255,181 +315,361 @@ export default function ContactView() {
               boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
             }}
           >
-            <form
-              style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}
-              onSubmit={(e) => e.preventDefault()}
-            >
-              {/* Responsive Name Grid: 1 col on mobile, 2 cols on >= 640px */}
-              <div className="contact-name-grid">
-                <div>
-                  <label
-                    style={{
-                      display: 'block',
-                      fontFamily: 'var(--font-display)',
-                      fontSize: '0.82rem',
-                      fontWeight: '600',
-                      marginBottom: '0.4rem',
-                      color: '#1E293B',
-                    }}
-                  >
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="John"
-                    style={inputStyle}
-                    onFocus={(e) => {
-                      e.target.style.borderColor = '#C5A059';
-                      e.target.style.boxShadow = '0 0 0 3px rgba(197, 160, 89, 0.15)';
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.borderColor = '#E2E8F0';
-                      e.target.style.boxShadow = 'none';
-                    }}
-                  />
+            {status === 'success' ? (
+              <div style={{ textAlign: 'center', padding: '1rem 0.5rem' }}>
+                <div
+                  style={{
+                    width: '64px',
+                    height: '64px',
+                    borderRadius: '50%',
+                    background: 'rgba(197, 160, 89, 0.12)',
+                    border: '2px solid #C5A059',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 1.5rem auto',
+                    color: '#C5A059',
+                  }}
+                >
+                  <CheckCircle2 size={36} />
                 </div>
-                <div>
-                  <label
-                    style={{
-                      display: 'block',
-                      fontFamily: 'var(--font-display)',
-                      fontSize: '0.82rem',
-                      fontWeight: '600',
-                      marginBottom: '0.4rem',
-                      color: '#1E293B',
-                    }}
-                  >
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Doe"
-                    style={inputStyle}
-                    onFocus={(e) => {
-                      e.target.style.borderColor = '#C5A059';
-                      e.target.style.boxShadow = '0 0 0 3px rgba(197, 160, 89, 0.15)';
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.borderColor = '#E2E8F0';
-                      e.target.style.boxShadow = 'none';
-                    }}
-                  />
+
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: '1.45rem',
+                    fontWeight: '700',
+                    color: '#0F172A',
+                    marginBottom: '0.6rem',
+                  }}
+                >
+                  Inquiry Dispatched Successfully
+                </h3>
+
+                <p
+                  style={{
+                    color: '#475569',
+                    fontSize: '0.95rem',
+                    lineHeight: 1.6,
+                    maxWidth: '460px',
+                    margin: '0 auto 1.5rem auto',
+                  }}
+                >
+                  Thank you, <strong style={{ color: '#0F172A' }}>{formData.firstName}</strong>. Your message has been transmitted directly to{' '}
+                  <strong style={{ color: '#C5A059' }}>contact@avarainternational.com</strong>.
+                  Our executive team will review your requirements and respond to{' '}
+                  <span style={{ color: '#0F172A', fontWeight: '600' }}>{formData.email}</span>.
+                </p>
+
+                <div
+                  style={{
+                    background: '#FFFFFF',
+                    border: '1px solid #E2E8F0',
+                    borderRadius: '12px',
+                    padding: '1.1rem 1.25rem',
+                    textAlign: 'left',
+                    marginBottom: '1.8rem',
+                    fontSize: '0.85rem',
+                    color: '#64748B',
+                    lineHeight: 1.5,
+                  }}
+                >
+                  <div style={{ marginBottom: '0.4rem' }}>
+                    <span style={{ fontWeight: '600', color: '#0F172A' }}>Inquiry Track:</span> {formData.inquiryType}
+                  </div>
+                  <div>
+                    <span style={{ fontWeight: '600', color: '#0F172A' }}>Target Mailbox:</span> contact@avarainternational.com
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <label
-                  style={{
-                    display: 'block',
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '0.82rem',
-                    fontWeight: '600',
-                    marginBottom: '0.4rem',
-                    color: '#1E293B',
-                  }}
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="btn-gold btn-responsive"
+                  style={{ margin: '0 auto' }}
                 >
-                  Work Email Address
-                </label>
-                <input
-                  type="email"
-                  placeholder="john@company.com"
-                  style={inputStyle}
-                  onFocus={(e) => {
-                    e.target.style.borderColor = '#C5A059';
-                    e.target.style.boxShadow = '0 0 0 3px rgba(197, 160, 89, 0.15)';
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = '#E2E8F0';
-                    e.target.style.boxShadow = 'none';
-                  }}
-                />
+                  Send Another Message
+                </button>
               </div>
-
-              <div>
-                <label
-                  style={{
-                    display: 'block',
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '0.82rem',
-                    fontWeight: '600',
-                    marginBottom: '0.4rem',
-                    color: '#1E293B',
-                  }}
-                >
-                  Inquiry Type
-                </label>
-                <select
-                  style={{
-                    ...inputStyle,
-                    appearance: 'none',
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2364748B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'right 1.2rem center',
-                  }}
-                  onFocus={(e) => {
-                    e.target.style.borderColor = '#C5A059';
-                    e.target.style.boxShadow = '0 0 0 3px rgba(197, 160, 89, 0.15)';
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = '#E2E8F0';
-                    e.target.style.boxShadow = 'none';
-                  }}
-                >
-                  <option>Investment & Capital Deployment (Connecting Investors & Companies)</option>
-                  <option>Logistics & Medicine Supply Chain</option>
-                  <option>International Healthcare Facilitation (Top Thailand Hospitals)</option>
-                  <option>Real Estate in Thailand</option>
-                  <option>Business Consulting & Market Entry</option>
-                  <option>E-Commerce & Retail Distribution</option>
-                  <option>Strategic Venture Opportunity</option>
-                </select>
-              </div>
-
-              <div>
-                <label
-                  style={{
-                    display: 'block',
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '0.82rem',
-                    fontWeight: '600',
-                    marginBottom: '0.4rem',
-                    color: '#1E293B',
-                  }}
-                >
-                  Message
-                </label>
-                <textarea
-                  placeholder="Tell us about your organization and how we can collaborate..."
-                  rows={4}
-                  style={{ ...inputStyle, minHeight: '110px', resize: 'vertical' }}
-                  onFocus={(e) => {
-                    e.target.style.borderColor = '#C5A059';
-                    e.target.style.boxShadow = '0 0 0 3px rgba(197, 160, 89, 0.15)';
-                  }}
-                  onBlur={(e) => {
-                    e.target.style.borderColor = '#E2E8F0';
-                    e.target.style.boxShadow = 'none';
-                  }}
-                />
-              </div>
-
-              {/* Primary Gold Submit Button: full-width on mobile, min 48px height */}
-              <button
-                type="submit"
-                className="btn-gold btn-responsive"
-                style={{
-                  marginTop: '0.4rem',
-                }}
+            ) : (
+              <form
+                style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}
+                onSubmit={handleSubmit}
               >
-                Send Message <ChevronRight size={18} />
-              </button>
-            </form>
+                {status === 'error' && (
+                  <div
+                    style={{
+                      background: 'rgba(239, 68, 68, 0.08)',
+                      border: '1px solid rgba(239, 68, 68, 0.3)',
+                      borderRadius: '12px',
+                      padding: '1rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.6rem',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#DC2626', fontSize: '0.9rem', fontWeight: '600' }}>
+                      <AlertCircle size={18} />
+                      <span>Submission Notice</span>
+                    </div>
+                    <p style={{ margin: 0, fontSize: '0.82rem', color: '#475569', lineHeight: 1.5 }}>
+                      {errorMessage}
+                    </p>
+                    <a
+                      href={mailtoFallbackUrl}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '0.5rem',
+                        padding: '0.65rem 1rem',
+                        borderRadius: '8px',
+                        background: '#0F172A',
+                        color: '#FFFFFF',
+                        textDecoration: 'none',
+                        fontSize: '0.85rem',
+                        fontWeight: '600',
+                        marginTop: '0.2rem',
+                      }}
+                    >
+                      <Mail size={16} /> Open in Email App to contact@avarainternational.com
+                    </a>
+                  </div>
+                )}
+
+                {/* Responsive Name Grid: 1 col on mobile, 2 cols on >= 640px */}
+                <div className="contact-name-grid">
+                  <div>
+                    <label
+                      style={{
+                        display: 'block',
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '0.82rem',
+                        fontWeight: '600',
+                        marginBottom: '0.4rem',
+                        color: '#1E293B',
+                      }}
+                    >
+                      First Name <span style={{ color: '#DC2626' }}>*</span>
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="John"
+                      value={formData.firstName}
+                      onChange={(e) => setFormData((prev) => ({ ...prev, firstName: e.target.value }))}
+                      style={inputStyle}
+                      onFocus={(e) => {
+                        e.target.style.borderColor = '#C5A059';
+                        e.target.style.boxShadow = '0 0 0 3px rgba(197, 160, 89, 0.15)';
+                      }}
+                      onBlur={(e) => {
+                        e.target.style.borderColor = '#E2E8F0';
+                        e.target.style.boxShadow = 'none';
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      style={{
+                        display: 'block',
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '0.82rem',
+                        fontWeight: '600',
+                        marginBottom: '0.4rem',
+                        color: '#1E293B',
+                      }}
+                    >
+                      Last Name <span style={{ color: '#DC2626' }}>*</span>
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Doe"
+                      value={formData.lastName}
+                      onChange={(e) => setFormData((prev) => ({ ...prev, lastName: e.target.value }))}
+                      style={inputStyle}
+                      onFocus={(e) => {
+                        e.target.style.borderColor = '#C5A059';
+                        e.target.style.boxShadow = '0 0 0 3px rgba(197, 160, 89, 0.15)';
+                      }}
+                      onBlur={(e) => {
+                        e.target.style.borderColor = '#E2E8F0';
+                        e.target.style.boxShadow = 'none';
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    style={{
+                      display: 'block',
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '0.82rem',
+                      fontWeight: '600',
+                      marginBottom: '0.4rem',
+                      color: '#1E293B',
+                    }}
+                  >
+                    Work Email Address <span style={{ color: '#DC2626' }}>*</span>
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="john@company.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
+                    style={inputStyle}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#C5A059';
+                      e.target.style.boxShadow = '0 0 0 3px rgba(197, 160, 89, 0.15)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#E2E8F0';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label
+                    style={{
+                      display: 'block',
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '0.82rem',
+                      fontWeight: '600',
+                      marginBottom: '0.4rem',
+                      color: '#1E293B',
+                    }}
+                  >
+                    Inquiry Type
+                  </label>
+                  <select
+                    value={formData.inquiryType}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, inquiryType: e.target.value }))}
+                    style={{
+                      ...inputStyle,
+                      appearance: 'none',
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2364748B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
+                      backgroundRepeat: 'no-repeat',
+                      backgroundPosition: 'right 1.2rem center',
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#C5A059';
+                      e.target.style.boxShadow = '0 0 0 3px rgba(197, 160, 89, 0.15)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#E2E8F0';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  >
+                    <option>Investment & Capital Deployment (Connecting Investors & Companies)</option>
+                    <option>Logistics & Medicine Supply Chain</option>
+                    <option>International Healthcare Facilitation (Top Thailand Hospitals)</option>
+                    <option>Real Estate in Thailand</option>
+                    <option>Business Consulting & Market Entry</option>
+                    <option>E-Commerce & Retail Distribution</option>
+                    <option>Strategic Venture Opportunity</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label
+                    style={{
+                      display: 'block',
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '0.82rem',
+                      fontWeight: '600',
+                      marginBottom: '0.4rem',
+                      color: '#1E293B',
+                    }}
+                  >
+                    Message <span style={{ color: '#DC2626' }}>*</span>
+                  </label>
+                  <textarea
+                    required
+                    placeholder="Tell us about your organization and how we can collaborate..."
+                    rows={4}
+                    value={formData.message}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
+                    style={{ ...inputStyle, minHeight: '110px', resize: 'vertical' }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#C5A059';
+                      e.target.style.boxShadow = '0 0 0 3px rgba(197, 160, 89, 0.15)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#E2E8F0';
+                      e.target.style.boxShadow = 'none';
+                    }}
+                  />
+                </div>
+
+                {/* Primary Gold Submit Button: full-width on mobile, min 48px height */}
+                <button
+                  type="submit"
+                  disabled={status === 'submitting'}
+                  className="btn-gold btn-responsive"
+                  style={{
+                    marginTop: '0.4rem',
+                    opacity: status === 'submitting' ? 0.75 : 1,
+                    cursor: status === 'submitting' ? 'not-allowed' : 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                  }}
+                >
+                  {status === 'submitting' ? (
+                    <>
+                      <Loader2 size={18} className="animate-spin" /> Sending to contact@avarainternational.com...
+                    </>
+                  ) : (
+                    <>
+                      Send Message <ChevronRight size={18} />
+                    </>
+                  )}
+                </button>
+
+                {/* Direct Mail Routing Assurance */}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.4rem',
+                    fontSize: '0.78rem',
+                    color: '#64748B',
+                    marginTop: '0.2rem',
+                    textAlign: 'center',
+                  }}
+                >
+                  <Mail size={14} color="#C5A059" />
+                  <span>
+                    Direct destination:{' '}
+                    <a
+                      href="mailto:contact@avarainternational.com"
+                      style={{ color: '#0F172A', fontWeight: '600', textDecoration: 'underline' }}
+                    >
+                      contact@avarainternational.com
+                    </a>
+                  </span>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </section>
 
       {/* Component Specific Responsive Rules */}
       <style>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-spin {
+          animation: spin 1s linear infinite;
+        }
         .contact-main-layout {
           display: grid;
           grid-template-columns: 1fr;
